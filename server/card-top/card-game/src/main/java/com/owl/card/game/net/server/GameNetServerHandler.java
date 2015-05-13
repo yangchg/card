@@ -27,11 +27,13 @@ public class GameNetServerHandler extends ChannelInboundHandlerAdapter {
 	@Override
 	public void exceptionCaught(ChannelHandlerContext ctx, Throwable e) {
 		// 异常
+		System.out.println("RamoteAddress : " + ctx.channel().remoteAddress() + " 网络异常:" + e.toString());
 	}
 
 	@Override
 	public void channelInactive(ChannelHandlerContext ctx) {
 		// 断开连接
+		System.out.println("RamoteAddress : " + ctx.channel().remoteAddress() + " 断开 !");
 	}
 
 }
