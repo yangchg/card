@@ -14,7 +14,7 @@ public class AppGameServer {
 	
 	public static void main(String[] args) {
 		
-		logger.info("游戏服务器启动...");
+		logger.info("游戏服务器启动....");
 		
 		// 开启网络
 		GameNetServer gameNetServer = new GameNetServer();
