@@ -2,6 +2,7 @@ package com.owl.card.game;
 
 import org.apache.log4j.Logger;
 
+import com.owl.card.game.net.handler.ProtoMsgRegister;
 import com.owl.card.game.net.server.GameNetServer;
 
 /**
@@ -15,6 +16,8 @@ public class AppGameServer {
 	public static void main(String[] args) {
 
 		logger.info("游戏服务器启动....");
+
+		ProtoMsgRegister.registerMsg();
 
 		// 开启网络
 		GameNetServer gameNetServer = new GameNetServer();

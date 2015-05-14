@@ -1,12 +1,11 @@
 package com.owl.card.gateway.net.client;
 
+import com.owl.card.gateway.net.handler.GateTopMsgEncoder;
+
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;
-import io.netty.handler.codec.DelimiterBasedFrameDecoder;
-import io.netty.handler.codec.Delimiters;
-import io.netty.handler.codec.string.StringDecoder;
-import io.netty.handler.codec.string.StringEncoder;
+import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
 
 public class GateNetClientInitializer extends ChannelInitializer<SocketChannel> {
 
@@ -14,11 +13,10 @@ public class GateNetClientInitializer extends ChannelInitializer<SocketChannel> 
 	protected void initChannel(SocketChannel ch) throws Exception {
 		ChannelPipeline pipeline = ch.pipeline();
 
-		pipeline.addLast("framer", new DelimiterBasedFrameDecoder(8192, Delimiters.lineDelimiter()));
-		pipeline.addLast("decoder", new StringDecoder());
-		pipeline.addLast("encoder", new StringEncoder());
+		pipeline.addLast("framer", new LengthFieldBasedFrameDecoder(128 * 1024 * 1024, 0, 4, 0, 4, true));
 
-		// 客户端的逻辑
+		pipeline.addLast("encoder", new GateTopMsgEncoder());
+
 		pipeline.addLast("handler", new GateNetClientHandler());
 	}
 }

@@ -1,19 +1,33 @@
 package com.owl.card.game.net.handler;
 
-import java.util.Arrays;
-import java.util.List;
-
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToMessageDecoder;
+
+import java.util.Arrays;
+import java.util.List;
+
+import com.owl.card.common.msg.TopMsg;
 
 public class TopMsgProtobufDecoder extends MessageToMessageDecoder<ByteBuf> {
 
 	@Override
 	protected void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out) throws Exception {
 
-		byte[] bytes = in.array();
-		System.out.println("TopMsgProtobufDecoder:" + Arrays.toString(bytes));
+		int chId = in.readInt();
+		int msgType = in.readShort();
+		int msgLen = in.readInt();
 
+		byte[] msgBodyBytes = new byte[msgLen];
+		in.readBytes(msgBodyBytes, 0, msgLen);
+
+		System.out.println("TopMsgProtobufDecoder:" + Arrays.toString(msgBodyBytes));
+
+		TopMsg topMsg = new TopMsg(msgType);
+		topMsg.setChId(chId);
+		topMsg.setMsgType(msgType);
+		topMsg.setMsgBodyBytes(msgBodyBytes);
+
+		out.add(topMsg);
 	}
 }

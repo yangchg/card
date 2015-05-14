@@ -1,9 +1,7 @@
 package com.owl.card.gateway.websocket;
 
-import io.netty.buffer.Unpooled;
 import io.netty.channel.Channel;
 
-import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.Arrays;
 
@@ -15,11 +13,7 @@ import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 
-import com.google.protobuf.InvalidProtocolBufferException;
-import com.google.protobuf.MessageLite;
 import com.owl.card.common.msg.TopMsg;
-import com.owl.card.common.protobuf.cs.UserLoginC2S;
-import com.owl.card.common.protobuf.cs.UserLoginS2C;
 import com.owl.card.common.utils.BytesTools;
 import com.owl.card.gateway.app.GateAppManager;
 
@@ -72,26 +66,29 @@ public class WSSocket {
 		int len = BytesTools.readInt(bytes, 2);
 		System.out.println("消息编号:" + msgType + ",长度:" + len);
 
-		// 消息长度|连接编号|消息体(消息编号+长度+消息体)
-		int msgBodyLen = 4 + bytes.length;
-		int sendMsgLen = 4 + msgBodyLen;
+		byte[] msgBody = BytesTools.readBytes(bytes, 6, len);
 
-		byte[] sendBytes = new byte[sendMsgLen];
-		BytesTools.intToByte(sendBytes, 0, 4 + bytes.length);
-		BytesTools.intToByte(sendBytes, 4, clientChannelId);
-		System.arraycopy(bytes, 0, sendBytes, 8, bytes.length);
+		TopMsg topMsg = new TopMsg();
+		topMsg.setChId(clientChannelId);
+		topMsg.setMsgType(msgType);
+		topMsg.setMsgBodyBytes(msgBody);
 		
-		System.out.println("gateway->game:" + Arrays.toString(sendBytes));
-
 		// 发送到游戏服务器
 		Channel channel = GateAppManager.gameClientChannels.get(0);
-		// channel.writeAndFlush(sendBytes);
+		channel.writeAndFlush(topMsg);
 		
-		TopMsg topMsg = new TopMsg();
-		topMsg.setMsgType(11);
-		channel.writeAndFlush("1231231");
-		
-		
+
+		/*
+		 * // 消息长度|连接编号|消息体(消息编号+长度+消息体) int msgBodyLen = 4 + bytes.length; int sendMsgLen = 4 + msgBodyLen;
+		 * 
+		 * byte[] sendBytes = new byte[sendMsgLen]; BytesTools.intToByte(sendBytes, 0, 4 + bytes.length);
+		 * BytesTools.intToByte(sendBytes, 4, clientChannelId); System.arraycopy(bytes, 0, sendBytes, 8, bytes.length);
+		 * 
+		 * System.out.println("gateway->game:" + Arrays.toString(sendBytes));
+		 * 
+		 * // 发送到游戏服务器 Channel channel = GateAppManager.gameClientChannels.get(0); channel.writeAndFlush(sendBytes);
+		 */
+
 		// byte[] msgBody = BytesTools.readBytes(bytes, 6, len);
 		//
 		// TopMsg topMsg = new TopMsg();
