@@ -19,6 +19,5 @@ public class AppGameServer {
 		// 开启网络
 		GameNetServer gameNetServer = new GameNetServer();
 		gameNetServer.start();
-
 	}
 }

@@ -2,14 +2,25 @@ package com.owl.card.gateway.app;
 
 import io.netty.channel.Channel;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
+
+import javax.websocket.Session;
 
 public class GateAppManager {
 
-	public static Set<Channel> gameClientChannels = new HashSet<Channel>();
+	public static AtomicInteger channelIdMaker = new AtomicInteger();
 
-	
+	// 连接游戏服务器的客户端
+	public static List<Channel> gameClientChannels = new ArrayList<Channel>();
+
+	// 玩家session
+	public static Map<Integer, Session> clientSessions = new ConcurrentHashMap<Integer, Session>();
+	public static Map<Session, Integer> sessionIds = new ConcurrentHashMap<Session, Integer>();
+
 	public boolean init() {
 
 		return true;
