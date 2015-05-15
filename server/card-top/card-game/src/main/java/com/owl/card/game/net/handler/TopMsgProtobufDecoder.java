@@ -24,7 +24,7 @@ public class TopMsgProtobufDecoder extends MessageToMessageDecoder<ByteBuf> {
 		System.out.println("TopMsgProtobufDecoder:" + Arrays.toString(msgBodyBytes));
 
 		TopMsg topMsg = new TopMsg(msgType);
-		topMsg.setChId(chId);
+		topMsg.setChannelId(chId);
 		topMsg.setMsgType(msgType);
 		topMsg.setMsgBodyBytes(msgBodyBytes);
 

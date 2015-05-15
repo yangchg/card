@@ -16,7 +16,7 @@ public class GateTopMsgDecoder extends MessageToMessageDecoder<ByteBuf> {
 
 		int chId = in.readInt();
 		int msgType = in.readShort();
-		int msgLen = in.readInt();
+		int msgLen = in.readableBytes();
 
 		byte[] msgBodyBytes = new byte[msgLen];
 		in.readBytes(msgBodyBytes, 0, msgLen);
@@ -24,7 +24,7 @@ public class GateTopMsgDecoder extends MessageToMessageDecoder<ByteBuf> {
 		System.out.println("GateTopMsgDecoder:" + Arrays.toString(msgBodyBytes));
 
 		TopMsg topMsg = new TopMsg(msgType);
-		topMsg.setChId(chId);
+		topMsg.setChannelId(chId);
 		topMsg.setMsgType(msgType);
 		topMsg.setMsgBodyBytes(msgBodyBytes);
 

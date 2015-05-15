@@ -4,7 +4,6 @@ import static io.netty.buffer.Unpooled.wrappedBuffer;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToMessageEncoder;
 
-import java.util.Arrays;
 import java.util.List;
 
 import com.owl.card.common.msg.TopMsg;
@@ -14,9 +13,7 @@ public class GateTopMsgEncoder extends MessageToMessageEncoder<TopMsg> {
 
 	@Override
 	protected void encode(ChannelHandlerContext ctx, TopMsg msg, List<Object> out) throws Exception {
-		System.out.println("GateTopMsgEncoder encode..");
-
-		int chId = msg.getChId();
+		int chId = msg.getChannelId();
 		int msgType = msg.getMsgType();
 		byte[] msgBytes = msg.getMsgBodyBytes();
 
@@ -30,7 +27,7 @@ public class GateTopMsgEncoder extends MessageToMessageEncoder<TopMsg> {
 		BytesTools.intToByte(sendBytes, 10, msgBytes.length);
 		System.arraycopy(msgBytes, 0, sendBytes, 14, msgBytes.length);
 
-		System.out.println("GateTopMsgEncoder encode:" + Arrays.toString(sendBytes));
+		// System.out.println("GateTopMsgEncoder encode:" + Arrays.toString(sendBytes));
 
 		out.add(wrappedBuffer(sendBytes));
 	}

@@ -15,8 +15,28 @@
 	<context:annotation-config />
 
 	<!-- 让Spring通过自动扫描来查询和管理Bean -->
-	<context:component-scan base-package="com.owl.card.gateway" />
+	<context:component-scan base-package="com.owl.card.game.db.dao" />
+	<context:component-scan base-package="com.owl.card.game.db.service" />
+
+	<!-- 配置事务切面Bean,指定事务管理器 -->
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<!-- 用于配置详细的事务语义 -->
+		<tx:attributes>
+			<tx:method name="show*" read-only="true" />
+			<tx:method name="*" />
+		</tx:attributes>
+	</tx:advice>
+
+	<aop:config>
+		<!-- 配置一个切入点 -->
+		<aop:pointcut id="gamePointcut"
+			expression="execution(* com.owl.card.game.db.service.*.*(..))" />
+
+		<!-- 指定在userPointcut切入点应用txAdvice事务切面 -->
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="gamePointcut" />
+
+	</aop:config>
 	
-	<!-- <import resource="classpath:timeTask.xml" />  -->
-	
+	<import resource="classpath:applicationContext-dao.xml" />
+
 </beans>

@@ -16,7 +16,7 @@ public class TopMsgProtobufEncoder extends MessageToMessageEncoder<TopMsg> {
 	@Override
 	protected void encode(ChannelHandlerContext ctx, TopMsg topMsg, List<Object> out) throws Exception {
 		int msgType = topMsg.getMsgType();
-		int channelId = topMsg.getChId();
+		int channelId = topMsg.getChannelId();
 
 		// int len = 2 + 4;
 		// byte[] bytes = new byte[len];

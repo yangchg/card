@@ -17,7 +17,7 @@ public class GameNetServerHandler extends ChannelInboundHandlerAdapter {
 
 		// ctx.writeAndFlush("Welcome to " + InetAddress.getLocalHost().getHostName() + " service!\n");
 
-		// super.channelActive(ctx);
+		super.channelActive(ctx);
 	}
 
 	@Override
@@ -28,7 +28,7 @@ public class GameNetServerHandler extends ChannelInboundHandlerAdapter {
 		}
 
 		TopMsg topMsg = (TopMsg) msg;
-		// int channelId = topMsg.getChId();
+		int channelId = topMsg.getChannelId();
 		int msgType = topMsg.getMsgType();
 
 		MessageLite messageLite = TopMsg.fetchByMsgType(msgType);
@@ -55,12 +55,13 @@ public class GameNetServerHandler extends ChannelInboundHandlerAdapter {
 
 		UserLoginS2C.Builder userLoginS2C = UserLoginS2C.newBuilder();
 		userLoginS2C.setFlag(1);
-		
+
 		TopMsg.Builder sendTopMsgBuilder = TopMsg.newBuilder();
+		sendTopMsgBuilder.setChannelId(channelId);
 		sendTopMsgBuilder.setMsgType(11);
 		sendTopMsgBuilder.setMessageLite(userLoginS2C.build());
 		TopMsg sendMsg = sendTopMsgBuilder.build();
-		
+
 		// 发送消息
 		ctx.writeAndFlush(sendMsg);
 	}

@@ -23,9 +23,9 @@ public class WSSocket {
 	@OnOpen
 	public void onWebSocketConnect(Session sess) {
 
-		int channelId = GateAppManager.channelIdMaker.get();
-		GateAppManager.clientSessions.put(channelId, sess);
-		GateAppManager.sessionIds.put(sess, channelId);
+		int channelId = GateAppManager.channelIdMaker.incrementAndGet();
+		GateAppManager.channelIdSessions.put(channelId, sess);
+		GateAppManager.sessionChannelIds.put(sess, channelId);
 
 		System.out.println("新客户端连接ID:" + channelId);
 
@@ -54,7 +54,7 @@ public class WSSocket {
 			return;
 		}
 
-		Integer clientChannelId = GateAppManager.sessionIds.get(sess);
+		Integer clientChannelId = GateAppManager.sessionChannelIds.get(sess);
 		if (clientChannelId == null) {
 			return;
 		}
@@ -69,14 +69,13 @@ public class WSSocket {
 		byte[] msgBody = BytesTools.readBytes(bytes, 6, len);
 
 		TopMsg topMsg = new TopMsg();
-		topMsg.setChId(clientChannelId);
+		topMsg.setChannelId(clientChannelId);
 		topMsg.setMsgType(msgType);
 		topMsg.setMsgBodyBytes(msgBody);
-		
+
 		// 发送到游戏服务器
 		Channel channel = GateAppManager.gameClientChannels.get(0);
 		channel.writeAndFlush(topMsg);
-		
 
 		/*
 		 * // 消息长度|连接编号|消息体(消息编号+长度+消息体) int msgBodyLen = 4 + bytes.length; int sendMsgLen = 4 + msgBodyLen;
@@ -138,7 +137,15 @@ public class WSSocket {
 	}
 
 	@OnClose
-	public void onWebSocketClose(CloseReason reason) {
+	public void onWebSocketClose(Session sess, CloseReason reason) {
+		Integer clientChannelId = GateAppManager.sessionChannelIds.get(sess);
+		if (clientChannelId != null) {
+			GateAppManager.sessionChannelIds.remove(sess);
+			GateAppManager.channelIdSessions.remove(clientChannelId);
+		}
+
+		// 通知游戏服务器，玩家下线
+
 		System.out.println("Socket Closed: " + reason);
 	}
 

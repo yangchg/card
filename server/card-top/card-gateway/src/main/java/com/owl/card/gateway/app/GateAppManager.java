@@ -18,8 +18,8 @@ public class GateAppManager {
 	public static List<Channel> gameClientChannels = new ArrayList<Channel>();
 
 	// 玩家session
-	public static Map<Integer, Session> clientSessions = new ConcurrentHashMap<Integer, Session>();
-	public static Map<Session, Integer> sessionIds = new ConcurrentHashMap<Session, Integer>();
+	public static Map<Integer, Session> channelIdSessions = new ConcurrentHashMap<Integer, Session>();
+	public static Map<Session, Integer> sessionChannelIds = new ConcurrentHashMap<Session, Integer>();
 
 	public boolean init() {
 

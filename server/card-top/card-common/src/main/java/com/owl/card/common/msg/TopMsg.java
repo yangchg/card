@@ -11,7 +11,7 @@ public class TopMsg {
 	private MessageLite msgBody;
 	private byte[] msgBodyBytes;
 
-	private int chId;
+	private int channelId;
 
 	public int getMsgType() {
 		return msgType;
@@ -29,12 +29,12 @@ public class TopMsg {
 		this.msgBody = msgBody;
 	}
 
-	public int getChId() {
-		return chId;
+	public int getChannelId() {
+		return channelId;
 	}
 
-	public void setChId(int chId) {
-		this.chId = chId;
+	public void setChannelId(int channelId) {
+		this.channelId = channelId;
 	}
 
 	public byte[] getMsgBodyBytes() {
@@ -57,13 +57,28 @@ public class TopMsg {
 		this.msgBody = msgBody;
 	}
 
+	public TopMsg(int channelId, int msgType, MessageLite msgBody) {
+		this.channelId = channelId;
+		this.msgType = msgType;
+		this.msgBody = msgBody;
+	}
+
 	public static Builder newBuilder() {
 		return new Builder();
 	}
 
 	public static class Builder {
+		private int channelId;
 		private int msgType;
 		private MessageLite messageLite;
+
+		public int getChannelId() {
+			return channelId;
+		}
+
+		public void setChannelId(int channelId) {
+			this.channelId = channelId;
+		}
 
 		public int getMsgType() {
 			return msgType;
@@ -82,7 +97,7 @@ public class TopMsg {
 		}
 
 		public TopMsg build() {
-			TopMsg topMsg = new TopMsg(msgType, messageLite);
+			TopMsg topMsg = new TopMsg(channelId, msgType, messageLite);
 			return topMsg;
 		}
 

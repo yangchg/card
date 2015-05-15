@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF8'?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context" xsi:schemaLocation="http://www.springframework.org/schema/beans   http://www.springframework.org/schema/beans/spring-beans-2.5.xsd  http://www.springframework.org/schema/context     http://www.springframework.org/schema/context/spring-context-2.5.xsd  http://www.springframework.org/schema/tx   http://www.springframework.org/schema/tx/spring-tx-2.5.xsd  http://www.springframework.org/schema/aop   http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+
+	<context:annotation-config/>
+
+	<!-- 让Spring通过自动扫描来查询和管理Bean
+	 <context:component-scan base-package="com.loong.owl" 
+	/> -->
+
+	<!-- For future properties files -->
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>file:../cfg/jdbc-game.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- 定义数据源Bean，使用C3P0数据源实现 -->
+	<bean id="gameDataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+		<property name="url" value="${jdbc.userurl}"/>
+		<property name="username" value="${jdbc.username}"/>
+		<property name="password" value="${jdbc.password}"/>
+		<property name="initialSize" value="3"/>
+		<property name="maxActive" value="50"/>
+		<property name="filters" value="stat"/>
+		
+		<!-- 配置获取连接等待超时的时间 -->
+		<property name="maxWait" value="60000"/>
+	</bean>
+
+	<!-- 定义Hibernate的SessionFactory -->
+	<bean id="gameSessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+
+		<!-- 依赖注入数据源，注入正是上面定义的dataSource -->
+		<property name="dataSource">
+			<ref bean="gameDataSource"/>
+		</property>
+
+		<!-- mappingResouces属性用来列出全部映射文件 -->
+		<property name="configLocations">
+			<list>
+				<!-- 以下用来列出Hibernate映射文件 -->
+				<value>classpath:hibernate-game.cfg.xml
+				</value>
+			</list>
+		</property>
+
+		<!-- 定义Hibernate的SessionFactory的属性 -->
+		<property name="hibernateProperties">
+			<props>
+				<!-- 指定数据库方言 -->
+				<prop key="hibernate.dialect">
+					${hibernate.dialect}
+				</prop>
+				<!-- 
+				<prop key="hibernate.hbm2ddl.auto">create</prop>-->
+				<!-- 显示Hibernate持久化操作所生成的SQL 
+				<prop key="hibernate.show_sql">true</prop>-->
+				<!-- 将SQL脚本进行格式化后再输出
+				<prop key="hibernate.format_sql">true</prop> -->
+				<!-- 是否根据需要每次自动创建数据库，注意，在正式环境中一定不能设置 
+				<prop key="hibernate.hbm2ddl.auto">create</prop> -->
+			</props>
+		</property>
+	</bean>
+
+	<!-- 配置Hibernate的局部事务管理器，使用HibernateTransactionManager类 -->
+	<!-- 该类实现PlatformTransactionManager接口，是针对Hibernate的特定实现 -->
+	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<!-- 配置HibernateTransactionManager时需要依注入SessionFactory的引用 -->
+		<property name="sessionFactory" ref="gameSessionFactory"/>
+	</bean>
+
+</beans>
