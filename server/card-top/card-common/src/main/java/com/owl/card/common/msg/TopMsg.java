@@ -52,6 +52,42 @@ public class TopMsg {
 		this.msgType = msgType;
 	}
 
+	public TopMsg(int msgType, MessageLite msgBody) {
+		this.msgType = msgType;
+		this.msgBody = msgBody;
+	}
+
+	public static Builder newBuilder() {
+		return new Builder();
+	}
+
+	public static class Builder {
+		private int msgType;
+		private MessageLite messageLite;
+
+		public int getMsgType() {
+			return msgType;
+		}
+
+		public void setMsgType(int msgType) {
+			this.msgType = msgType;
+		}
+
+		public MessageLite getMessageLite() {
+			return messageLite;
+		}
+
+		public void setMessageLite(MessageLite messageLite) {
+			this.messageLite = messageLite;
+		}
+
+		public TopMsg build() {
+			TopMsg topMsg = new TopMsg(msgType, messageLite);
+			return topMsg;
+		}
+
+	}
+
 	public static void registerMsg(int msgType, MessageLite messageLite) {
 		if (msgType < 0 || msgType > MAX_MSG_TYPE) {
 			throw new RuntimeException("proto消息注册，消息编号不合法:" + msgType);
@@ -91,18 +127,12 @@ public class TopMsg {
 		}
 
 		/*
-		else if (this.msgBodyBin != null) {
-			if (ml != null) {
-				try {
-					MessageLite mls = ml.getParserForType().parseFrom(msgBodyBin, 0, msgBodyBin.length);
-					sb.append(mls.toString());
-				} catch (InvalidProtocolBufferException e) {
-					e.printStackTrace();
-				}
-			}
-
-		}
-		*/
+		 * else if (this.msgBodyBin != null) { if (ml != null) { try { MessageLite mls =
+		 * ml.getParserForType().parseFrom(msgBodyBin, 0, msgBodyBin.length); sb.append(mls.toString()); } catch
+		 * (InvalidProtocolBufferException e) { e.printStackTrace(); } }
+		 * 
+		 * }
+		 */
 
 		return sb;
 	}

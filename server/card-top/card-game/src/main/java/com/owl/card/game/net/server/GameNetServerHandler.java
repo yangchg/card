@@ -3,8 +3,10 @@ package com.owl.card.game.net.server;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 
+import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.MessageLite;
 import com.owl.card.common.msg.TopMsg;
+import com.owl.card.common.protobuf.cs.UserLoginS2C;
 
 public class GameNetServerHandler extends ChannelInboundHandlerAdapter {
 
@@ -26,7 +28,7 @@ public class GameNetServerHandler extends ChannelInboundHandlerAdapter {
 		}
 
 		TopMsg topMsg = (TopMsg) msg;
-		//int channelId = topMsg.getChId();
+		// int channelId = topMsg.getChId();
 		int msgType = topMsg.getMsgType();
 
 		MessageLite messageLite = TopMsg.fetchByMsgType(msgType);
@@ -35,7 +37,14 @@ public class GameNetServerHandler extends ChannelInboundHandlerAdapter {
 			return;
 		}
 
-		topMsg.setMsgBody(messageLite);
+		MessageLite msgBody = null;
+		try {
+			msgBody = messageLite.getParserForType().parseFrom(topMsg.getMsgBodyBytes());
+		} catch (InvalidProtocolBufferException e) {
+			e.printStackTrace();
+		}
+
+		topMsg.setMsgBody(msgBody);
 
 		System.out.println("收到客户端消息:" + topMsg.dumpMsg());
 
@@ -44,7 +53,16 @@ public class GameNetServerHandler extends ChannelInboundHandlerAdapter {
 		// 返回客户端消息 - 我已经接收到了你的消息
 		// ctx.writeAndFlush("Received your message !\n");
 
+		UserLoginS2C.Builder userLoginS2C = UserLoginS2C.newBuilder();
+		userLoginS2C.setFlag(1);
 		
+		TopMsg.Builder sendTopMsgBuilder = TopMsg.newBuilder();
+		sendTopMsgBuilder.setMsgType(11);
+		sendTopMsgBuilder.setMessageLite(userLoginS2C.build());
+		TopMsg sendMsg = sendTopMsgBuilder.build();
+		
+		// 发送消息
+		ctx.writeAndFlush(sendMsg);
 	}
 
 	@Override

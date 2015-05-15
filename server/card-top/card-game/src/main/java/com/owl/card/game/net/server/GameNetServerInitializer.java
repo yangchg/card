@@ -4,8 +4,10 @@ import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
+import io.netty.handler.codec.LengthFieldPrepender;
 
 import com.owl.card.game.net.handler.TopMsgProtobufDecoder;
+import com.owl.card.game.net.handler.TopMsgProtobufEncoder;
 
 public class GameNetServerInitializer extends ChannelInitializer<SocketChannel> {
 
@@ -17,7 +19,9 @@ public class GameNetServerInitializer extends ChannelInitializer<SocketChannel> 
 
 		pipeline.addLast("protobufDecoder", new TopMsgProtobufDecoder());
 
-		// pipeline.addLast("protobufDecoder", new TopMsgProtobufDecoder());
+		// 编码
+		// pipeline.addLast("frameEncoder", new LengthFieldPrepender(4, true));
+		pipeline.addLast("protobufEncoder", new TopMsgProtobufEncoder());
 
 		// 字符串解码 和 编码
 		// pipeline.addLast("decoder", new StringDecoder());
