@@ -42,6 +42,7 @@
 		<hibernate.core.version>4.3.4.Final</hibernate.core.version>
 		<druid.version>1.0.3</druid.version>
 		<mysql.connector.version>5.1.15</mysql.connector.version>
+		<disruptor.version>3.2.1</disruptor.version>
 
 	</properties>
 
@@ -218,11 +219,16 @@
 				<artifactId>druid</artifactId>
 				<version>${druid.version}</version>
 			</dependency>
-
 			<dependency>
 				<groupId>mysql</groupId>
 				<artifactId>mysql-connector-java</artifactId>
 				<version>${mysql.connector.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.lmax</groupId>
+				<artifactId>disruptor</artifactId>
+				<version>${disruptor.version}</version>
 			</dependency>
 
 		</dependencies>

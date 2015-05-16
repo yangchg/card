@@ -34,9 +34,8 @@
 
 		<!-- 指定在userPointcut切入点应用txAdvice事务切面 -->
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="gamePointcut" />
-
 	</aop:config>
-	
+
 	<import resource="classpath:applicationContext-dao.xml" />
 
 </beans>

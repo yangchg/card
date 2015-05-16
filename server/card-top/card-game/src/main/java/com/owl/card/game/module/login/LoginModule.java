@@ -11,9 +11,6 @@ import com.owl.card.game.module.login.interfaces.LoginModuleInterface;
 
 public class LoginModule extends BaseModule implements LoginModuleInterface {
 
-	@Resource
-	private AccountService accountService;
-
 	@Override
 	public void onInit() {
 
@@ -34,7 +31,7 @@ public class LoginModule extends BaseModule implements LoginModuleInterface {
 
 		String accName = Integer.toString(accId);
 
-		Account account = accountService.findAccByName(accName);
+		// Account account = accountService.findAccByName(accName);
 
 	}
 }
