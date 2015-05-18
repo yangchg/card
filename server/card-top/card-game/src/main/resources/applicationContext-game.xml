@@ -28,7 +28,7 @@
 	</tx:advice>
 
 	<aop:config>
-		<!-- 配置一个切入点 -->
+		<!-- 配置一个切入点   -->
 		<aop:pointcut id="gamePointcut"
 			expression="execution(* com.owl.card.game.db.service.*.*.*(..))" />
 
