@@ -13,7 +13,7 @@ import com.owl.card.common.domain.Account;
 import com.owl.card.common.persistence.UserGenericDaoImpl;
 import com.owl.card.game.db.dao.AccountDao;
 
-@Repository("accountDao")
+// @Repository("accountDao")
 public class AccountDaoImpl extends UserGenericDaoImpl<Account, Long> implements AccountDao {
 
 	@Override

@@ -53,8 +53,6 @@
 				<prop key="hibernate.dialect">
 					${hibernate.dialect}
 				</prop>
-				<!-- 
-				<prop key="hibernate.hbm2ddl.auto">create</prop>-->
 				<!-- 显示Hibernate持久化操作所生成的SQL 
 				<prop key="hibernate.show_sql">true</prop>-->
 				<!-- 将SQL脚本进行格式化后再输出
