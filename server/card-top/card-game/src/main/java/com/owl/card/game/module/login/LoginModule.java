@@ -54,8 +54,6 @@ public class LoginModule extends BaseModule implements LoginModuleInterface {
 			long accId = accountService.createAccount(account);
 			account.setId(accId);
 		}
-		
-		
 
 		logger.info("玩家登陆　accid:" + accid + ", tstamp" + tstamp + ", ticket：" + ticket);
 
