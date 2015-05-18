@@ -5,16 +5,15 @@ import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.springframework.orm.hibernate4.HibernateCallback;
 import org.springframework.stereotype.Repository;
 
 import com.owl.card.common.domain.Account;
-import com.owl.card.common.persistence.UserGenericDaoImpl;
+import com.owl.card.common.persistence.GameGenericDaoImpl;
 import com.owl.card.game.db.dao.AccountDao;
 
-// @Repository("accountDao")
-public class AccountDaoImpl extends UserGenericDaoImpl<Account, Long> implements AccountDao {
+@Repository("accountDao")
+public class AccountDaoImpl extends GameGenericDaoImpl<Account, Long> implements AccountDao {
 
 	@Override
 	public Account findByName(final String accName) {

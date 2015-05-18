@@ -1,37 +1,52 @@
 package com.owl.card.game.module.login;
 
-import javax.annotation.Resource;
+import org.apache.log4j.Logger;
 
 import com.owl.card.common.base.BaseModule;
-import com.owl.card.common.domain.Account;
+import com.owl.card.common.define.ClientMsgTypeDefine;
 import com.owl.card.common.msg.TopMsg;
 import com.owl.card.common.protobuf.cs.UserLoginC2S;
-import com.owl.card.game.db.service.game.AccountService;
+import com.owl.card.common.protobuf.cs.UserLoginS2C;
+import com.owl.card.game.manager.GameCallbackManager;
 import com.owl.card.game.module.login.interfaces.LoginModuleInterface;
+import com.owl.card.game.obj.Role;
 
 public class LoginModule extends BaseModule implements LoginModuleInterface {
 
+	private final static Logger logger = Logger.getLogger(LoginModule.class);
+
 	@Override
 	public void onInit() {
-
+		GameCallbackManager.registerClientMsg(ClientMsgTypeDefine.userLoginC2S, this.getClass(), "onRoleLogin");
 	}
 
 	@Override
-	public void onThreadInit() {
+	public void onWorkerInit() {
 
 	}
 
-	public void onRoleLogin(TopMsg topMsg) {
-		int channelId = topMsg.getChannelId();
-		UserLoginC2S userLoginC2S = (UserLoginC2S) topMsg.getMsgBody();
+	/**
+	 * 玩家登陆
+	 * 
+	 * @param role
+	 * @param topMsg
+	 */
+	public void onRoleLogin(Role role, TopMsg topMsg) {
 
-		int accId = userLoginC2S.getAccid();
+		UserLoginC2S userLoginC2S = (UserLoginC2S) topMsg.getMsgBody();
+		int accid = userLoginC2S.getAccid();
 		int tstamp = userLoginC2S.getTstamp();
 		String ticket = userLoginC2S.getTicket();
 
-		String accName = Integer.toString(accId);
+		logger.info("玩家登陆　accid:" + accid + ", tstamp" + tstamp + ", ticket：" + ticket);
 
-		// Account account = accountService.findAccByName(accName);
+		UserLoginS2C.Builder userLoginS2C = UserLoginS2C.newBuilder();
+		userLoginS2C.setFlag(1);
 
+		TopMsg.Builder sendTopMsgBuilder = TopMsg.newBuilder();
+		sendTopMsgBuilder.setMsgType(11);
+		sendTopMsgBuilder.setMessageLite(userLoginS2C.build());
+		TopMsg sendTopMsg = sendTopMsgBuilder.build();
+		role.sendMsg(sendTopMsg);
 	}
 }

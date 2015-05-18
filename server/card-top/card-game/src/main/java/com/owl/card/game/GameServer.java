@@ -1,11 +1,11 @@
 package com.owl.card.game;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.owl.card.common.base.BaseModule;
+import com.owl.card.common.define.ServerDefine;
+import com.owl.card.game.manager.AppGameMaster;
 import com.owl.card.game.net.handler.ProtoMsgRegister;
 import com.owl.card.game.net.server.GameNetServer;
 import com.owl.card.game.worker.GameWorker;
@@ -15,11 +15,12 @@ public class GameServer {
 	@SuppressWarnings("unused")
 	private ApplicationContext applicationContext;
 
-	private List<GameWorker> wrokers = new ArrayList<GameWorker>();
-
 	public void start() {
 
 		applicationContext = new ClassPathXmlApplicationContext("applicationContext-game.xml");
+
+		AppGameMaster appGameMaster = new AppGameMaster();
+		appGameMaster.init();
 
 		ProtoMsgRegister.registerMsg();
 
@@ -38,7 +39,9 @@ public class GameServer {
 	}
 
 	private void initConfig() {
-
+		for (BaseModule module : AppGameMaster.moduleManager.getModules()) {
+			module.onInit();
+		}
 	}
 
 	private void initLogic() {
@@ -46,14 +49,14 @@ public class GameServer {
 	}
 
 	private void startWorker() {
-		for (int i = 0; i < 4; i++) {
+		for (int i = 0; i < ServerDefine.GAME_SERVER_COUNT; i++) {
 			doStartWorker(i);
 		}
 	}
 
 	private void doStartWorker(int index) {
 		GameWorker gameWorker = new GameWorker(index);
-		wrokers.add(gameWorker);
+		AppGameMaster.workerManager.getWrokers().add(gameWorker);
 
 		gameWorker.start();
 	}

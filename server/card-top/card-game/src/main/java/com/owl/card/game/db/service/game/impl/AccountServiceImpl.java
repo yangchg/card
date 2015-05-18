@@ -10,12 +10,12 @@ import com.owl.card.game.db.service.game.AccountService;
 @Service("accountService")
 public class AccountServiceImpl implements AccountService {
 
-//	@Autowired
-//	private AccountDao accountDao;
-//
-//	@Override
-//	public Account findAccByName(String accName) {
-//		return accountDao.findByName(accName);
-//	}
+	@Autowired
+	private AccountDao accountDao;
+
+	@Override
+	public Account findAccByName(String accName) {
+		return accountDao.findByName(accName);
+	}
 
 }

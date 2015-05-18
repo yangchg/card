@@ -9,5 +9,5 @@ public abstract class BaseModule {
 	/**
 	 * 工作线程开启后的初始化。
 	 */
-	public abstract void onThreadInit();
+	public abstract void onWorkerInit();
 }

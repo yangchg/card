@@ -10,6 +10,6 @@ public interface AccountService {
 	 * @param accName
 	 * @return
 	 */
-	// public Account findAccByName(String accName);
+	public Account findAccByName(String accName);
 
 }

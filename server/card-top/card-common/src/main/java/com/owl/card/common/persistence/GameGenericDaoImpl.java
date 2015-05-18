@@ -14,7 +14,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.orm.hibernate4.HibernateCallback;
 import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 
-public class UserGenericDaoImpl<T extends Domain<?>, ID extends Serializable> extends HibernateDaoSupport implements
+public class GameGenericDaoImpl<T extends Domain<?>, ID extends Serializable> extends HibernateDaoSupport implements
 		GenericDao<T, ID> {
 
 	private Class<T> entityClass;
@@ -25,14 +25,14 @@ public class UserGenericDaoImpl<T extends Domain<?>, ID extends Serializable> ex
 	 * 构造函数
 	 */
 	@SuppressWarnings("unchecked")
-	public UserGenericDaoImpl() {
+	public GameGenericDaoImpl() {
 		entityClass = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
 		entityClassName = entityClass.getSimpleName();
 	}
 
 	// 为父类HibernateDaoSupport注入sessionFactory的值
 	@Resource
-	@Qualifier(value = "userSessionFactory")
+	@Qualifier(value = "gameSessionFactory")
 	public void setSuperSessionFactory(SessionFactory sessionFactory) {
 		super.setSessionFactory(sessionFactory);
 	}

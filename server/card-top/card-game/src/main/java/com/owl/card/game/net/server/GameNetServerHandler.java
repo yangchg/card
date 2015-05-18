@@ -5,8 +5,11 @@ import io.netty.channel.ChannelInboundHandlerAdapter;
 
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.MessageLite;
+import com.owl.card.common.define.InsideMsgTypeDefine;
+import com.owl.card.common.msg.InsideMsgWrap;
 import com.owl.card.common.msg.TopMsg;
-import com.owl.card.common.protobuf.cs.UserLoginS2C;
+import com.owl.card.common.task.MsgDealTask;
+import com.owl.card.game.manager.AppGameMaster;
 
 public class GameNetServerHandler extends ChannelInboundHandlerAdapter {
 
@@ -18,6 +21,8 @@ public class GameNetServerHandler extends ChannelInboundHandlerAdapter {
 		// ctx.writeAndFlush("Welcome to " + InetAddress.getLocalHost().getHostName() + " service!\n");
 
 		super.channelActive(ctx);
+
+		AppGameMaster.channelManager.setMainGatewayChannel(ctx);
 	}
 
 	@Override
@@ -37,6 +42,8 @@ public class GameNetServerHandler extends ChannelInboundHandlerAdapter {
 			return;
 		}
 
+		// System.out.println("GameNetServerHandler:" + Thread.currentThread().getName());
+
 		MessageLite msgBody = null;
 		try {
 			msgBody = messageLite.getParserForType().parseFrom(topMsg.getMsgBodyBytes());
@@ -48,22 +55,30 @@ public class GameNetServerHandler extends ChannelInboundHandlerAdapter {
 
 		System.out.println("收到客户端消息:" + topMsg.dumpMsg());
 
+		InsideMsgWrap insideMsgWrap = new InsideMsgWrap(InsideMsgTypeDefine.CLINET2SERVER_MSG);
+		insideMsgWrap.setClientMsg(topMsg);
+
+		MsgDealTask msgDealTask = new MsgDealTask(insideMsgWrap);
+		int workerId = AppGameMaster.fetchWorkerId(channelId);
+
+		AppGameMaster.workerManager.getWrokers().get(workerId).addAsyncTask(msgDealTask);
+
 		// System.out.println(ctx.channel().remoteAddress() + " Say : " + msg.toString());
 
 		// 返回客户端消息 - 我已经接收到了你的消息
 		// ctx.writeAndFlush("Received your message !\n");
 
-		UserLoginS2C.Builder userLoginS2C = UserLoginS2C.newBuilder();
-		userLoginS2C.setFlag(1);
-
-		TopMsg.Builder sendTopMsgBuilder = TopMsg.newBuilder();
-		sendTopMsgBuilder.setChannelId(channelId);
-		sendTopMsgBuilder.setMsgType(11);
-		sendTopMsgBuilder.setMessageLite(userLoginS2C.build());
-		TopMsg sendMsg = sendTopMsgBuilder.build();
-
-		// 发送消息
-		ctx.writeAndFlush(sendMsg);
+		//		UserLoginS2C.Builder userLoginS2C = UserLoginS2C.newBuilder();
+		//		userLoginS2C.setFlag(1);
+		//
+		//		TopMsg.Builder sendTopMsgBuilder = TopMsg.newBuilder();
+		//		sendTopMsgBuilder.setChannelId(channelId);
+		//		sendTopMsgBuilder.setMsgType(11);
+		//		sendTopMsgBuilder.setMessageLite(userLoginS2C.build());
+		//		TopMsg sendMsg = sendTopMsgBuilder.build();
+		//
+		//		// 发送消息
+		//		ctx.writeAndFlush(sendMsg);
 	}
 
 	@Override
