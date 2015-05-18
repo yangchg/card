@@ -1,4 +1,4 @@
-package com.owl.card.game;
+package com.owl.card.game.app;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -12,15 +12,17 @@ import com.owl.card.game.worker.GameWorker;
 
 public class GameServer {
 
-	@SuppressWarnings("unused")
 	private ApplicationContext applicationContext;
 
 	public void start() {
 
 		applicationContext = new ClassPathXmlApplicationContext("applicationContext-game.xml");
 
+		GameServerInit serverInit = (GameServerInit) this.applicationContext.getBean("serverInit");
+		serverInit.init();
+
 		AppGameMaster appGameMaster = new AppGameMaster();
-		appGameMaster.init();
+		appGameMaster.init(serverInit);
 
 		ProtoMsgRegister.registerMsg();
 

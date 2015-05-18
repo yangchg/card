@@ -30,12 +30,14 @@
 	<aop:config>
 		<!-- 配置一个切入点 -->
 		<aop:pointcut id="gamePointcut"
-			expression="execution(* com.owl.card.game.db.service.*.*(..))" />
+			expression="execution(* com.owl.card.game.db.service.*.*.*(..))" />
 
 		<!-- 指定在userPointcut切入点应用txAdvice事务切面 -->
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="gamePointcut" />
 	</aop:config>
 
 	<import resource="classpath:applicationContext-dao.xml" />
+
+	<bean id="serverInit" class="com.owl.card.game.app.GameServerInit" />
 
 </beans>

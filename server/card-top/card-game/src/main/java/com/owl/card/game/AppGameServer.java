@@ -2,6 +2,8 @@ package com.owl.card.game;
 
 import org.apache.log4j.Logger;
 
+import com.owl.card.game.app.GameServer;
+
 /**
  * 游戏服务器
  *

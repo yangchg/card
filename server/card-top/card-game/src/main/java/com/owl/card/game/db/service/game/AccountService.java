@@ -12,4 +12,11 @@ public interface AccountService {
 	 */
 	public Account findAccByName(String accName);
 
+	/**
+	 * 新建账号
+	 * 
+	 * @param account
+	 * @return 
+	 */
+	public long createAccount(Account account);
 }

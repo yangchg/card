@@ -29,7 +29,6 @@ public class GameWorker extends BaseWorker {
 	private Thread currentThread;
 
 	private final TaskExecComponent taskExecComponent;
-	private long workerExecTime;
 
 	private Map<Integer, Role> roleMap = new HashMap<Integer, Role>();
 
@@ -41,6 +40,7 @@ public class GameWorker extends BaseWorker {
 		this.roleMap = roleMap;
 	}
 
+	@SuppressWarnings("unchecked")
 	public GameWorker(int index) {
 		this.index = index;
 
