@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.owl.card.common.base.BaseModule;
+import com.owl.card.game.app.GameServerInit;
 import com.owl.card.game.module.login.LoginModule;
 import com.owl.card.game.module.login.interfaces.LoginModuleInterface;
 
@@ -41,7 +42,9 @@ public class GameModuleManager {
 	}
 
 	public void init() {
-		loginModule = registerModule(new LoginModule());
+		GameServerInit serverInit = AppGameMaster.serverInit;
+
+		loginModule = registerModule(new LoginModule(serverInit.getAccountService()));
 	}
 
 }

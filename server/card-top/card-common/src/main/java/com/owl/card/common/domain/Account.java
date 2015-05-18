@@ -63,6 +63,16 @@ public class Account implements Domain<Account> {
 		return this.id;
 	}
 
+	public Account() {
+
+	}
+
+	public Account(String accName, String accPwd, String regIP) {
+		this.accName = accName;
+		this.accPwd = accPwd;
+		this.regIP = regIP;
+	}
+
 	@Override
 	public void updateSet(Account domain) {
 		Account account = domain;
