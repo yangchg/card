@@ -19,7 +19,7 @@ import com.owl.card.common.task.TaskEvent;
 import com.owl.card.common.task.TaskExecComponent;
 import com.owl.card.common.task.WaitNoRtTask;
 import com.owl.card.game.manager.AppGameMaster;
-import com.owl.card.game.obj.Role;
+import com.owl.card.game.obj.GameSession;
 
 public class GameWorker extends BaseWorker {
 
@@ -30,13 +30,13 @@ public class GameWorker extends BaseWorker {
 
 	private final TaskExecComponent taskExecComponent;
 
-	private Map<Integer, Role> roleMap = new HashMap<Integer, Role>();
+	private Map<Integer, GameSession> roleMap = new HashMap<Integer, GameSession>();
 
-	public Map<Integer, Role> getRoleMap() {
+	public Map<Integer, GameSession> getRoleMap() {
 		return roleMap;
 	}
 
-	public void setRoleMap(Map<Integer, Role> roleMap) {
+	public void setRoleMap(Map<Integer, GameSession> roleMap) {
 		this.roleMap = roleMap;
 	}
 

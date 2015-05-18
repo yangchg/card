@@ -40,6 +40,4 @@
 	
 	<bean id="serverInit" class="com.owl.card.game.app.GameServerInit" />
 
-	<bean id="serverInit" class="com.owl.card.game.app.GameServerInit" />
-
 </beans>

@@ -8,7 +8,7 @@ import com.owl.card.common.msg.InsideMsgWrap;
 import com.owl.card.common.msg.TopMsg;
 import com.owl.card.common.task.InsideMsgExecutor;
 import com.owl.card.game.manager.AppGameMaster;
-import com.owl.card.game.obj.Role;
+import com.owl.card.game.obj.GameSession;
 
 public class GameInsideMsgExecutor extends InsideMsgExecutor {
 
@@ -39,13 +39,13 @@ public class GameInsideMsgExecutor extends InsideMsgExecutor {
 		}
 
 		GameWorker gameWorker = (GameWorker) baseWorker;
-		Map<Integer, Role> roleMap = gameWorker.getRoleMap();
+		Map<Integer, GameSession> roleMap = gameWorker.getRoleMap();
 		int channelId = topMsg.getChannelId();
 
-		Role role = roleMap.get(channelId);
+		GameSession role = roleMap.get(channelId);
 		if (role == null) {
 			// 获取缓存数据
-			role = new Role(channelId);
+			role = new GameSession(channelId);
 		}
 
 		int msgType = topMsg.getMsgType();

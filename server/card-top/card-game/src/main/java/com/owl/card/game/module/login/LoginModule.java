@@ -11,7 +11,7 @@ import com.owl.card.common.protobuf.cs.UserLoginS2C;
 import com.owl.card.game.db.service.game.AccountService;
 import com.owl.card.game.manager.GameCallbackManager;
 import com.owl.card.game.module.login.interfaces.LoginModuleInterface;
-import com.owl.card.game.obj.Role;
+import com.owl.card.game.obj.GameSession;
 
 public class LoginModule extends BaseModule implements LoginModuleInterface {
 
@@ -39,7 +39,7 @@ public class LoginModule extends BaseModule implements LoginModuleInterface {
 	 * @param role
 	 * @param topMsg
 	 */
-	public void onRoleLogin(Role role, TopMsg topMsg) {
+	public void onRoleLogin(GameSession role, TopMsg topMsg) {
 
 		UserLoginC2S userLoginC2S = (UserLoginC2S) topMsg.getMsgBody();
 		int accid = userLoginC2S.getAccid();

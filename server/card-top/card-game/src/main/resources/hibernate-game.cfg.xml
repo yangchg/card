@@ -6,6 +6,7 @@
 <hibernate-configuration>
 	<session-factory>
 		<mapping resource="domain/game/Account.hbm.xml" />
+		<mapping resource="domain/game/Role.hbm.xml" />
 		
 	</session-factory>
 </hibernate-configuration>

@@ -3,7 +3,7 @@ package com.owl.card.game.obj;
 import com.owl.card.common.msg.TopMsg;
 import com.owl.card.game.manager.AppGameMaster;
 
-public class Role {
+public class GameSession {
 	private int channelId;
 
 	public int getChannelId() {
@@ -14,7 +14,7 @@ public class Role {
 		this.channelId = channelId;
 	}
 
-	public Role(int channelId) {
+	public GameSession(int channelId) {
 		this.channelId = channelId;
 	}
 

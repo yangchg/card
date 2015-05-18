@@ -7,7 +7,7 @@ import java.util.List;
 import com.owl.card.common.base.BaseModule;
 import com.owl.card.common.define.ClientMsgTypeDefine;
 import com.owl.card.common.msg.TopMsg;
-import com.owl.card.game.obj.Role;
+import com.owl.card.game.obj.GameSession;
 
 public class GameCallbackManager {
 
@@ -21,7 +21,7 @@ public class GameCallbackManager {
 		}
 	}
 
-	public void callCallbackFunc(int msgType, Role role, TopMsg topMsg) {
+	public void callCallbackFunc(int msgType, GameSession role, TopMsg topMsg) {
 		if (msgType < 0 || msgType > ClientMsgTypeDefine.MAX_MSG_TYPE) {
 			assert false : "客户端消息处理越界:" + msgType;
 			return;
@@ -44,7 +44,7 @@ public class GameCallbackManager {
 
 		Method method = null;
 		try {
-			method = moduleCalss.getMethod(funcName, Role.class, TopMsg.class);
+			method = moduleCalss.getMethod(funcName, GameSession.class, TopMsg.class);
 		} catch (NoSuchMethodException e) {
 			e.printStackTrace();
 			assert false : "注册客户端消息对应的函数未找到:" + msgType;
