@@ -23,7 +23,6 @@ public class Role implements Domain<Role> {
 		this.version = version;
 	}
 
-
 	public String getName() {
 		return name;
 	}
@@ -93,7 +92,8 @@ public class Role implements Domain<Role> {
 
 	}
 
-	public Role(int sex, int level, int exp, int gold, int diamond, int point) {
+	public Role(long id, int sex, int level, int exp, int gold, int diamond, int point) {
+		this.id = id;
 		this.sex = sex;
 		this.level = level;
 		this.exp = exp;

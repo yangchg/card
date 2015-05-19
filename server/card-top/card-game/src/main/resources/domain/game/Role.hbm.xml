@@ -6,7 +6,7 @@
 	<class name="Role" table="role">
 		<id name="id" type="java.lang.Long">
 			<column name="id" />
-			<generator class="native" />
+			<generator class="assigned" />
 		</id>
 		<version name="version" column="objVersion" access="field"
 			type="long" />

@@ -12,10 +12,9 @@ package com.owl.card.common.protobuf.cs;
  * 客户端请求登陆
  * </pre>
  */
-public final class UserLoginC2S extends
-    com.google.protobuf.GeneratedMessage implements
-    // @@protoc_insertion_point(message_implements:UserLoginC2S)
-    UserLoginC2SOrBuilder {
+public  final class UserLoginC2S extends
+    com.google.protobuf.GeneratedMessage
+    implements UserLoginC2SOrBuilder {
   // Use UserLoginC2S.newBuilder() to construct.
   private UserLoginC2S(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
     super(builder);
@@ -72,9 +71,8 @@ public final class UserLoginC2S extends
             break;
           }
           case 26: {
-            com.google.protobuf.ByteString bs = input.readBytes();
             bitField0_ |= 0x00000004;
-            ticket_ = bs;
+            ticket_ = input.readBytes();
             break;
           }
         }
@@ -117,6 +115,7 @@ public final class UserLoginC2S extends
   }
 
   private int bitField0_;
+  // required int32 accid = 1;
   public static final int ACCID_FIELD_NUMBER = 1;
   private int accid_;
   /**
@@ -140,6 +139,7 @@ public final class UserLoginC2S extends
     return accid_;
   }
 
+  // required int32 tstamp = 2;
   public static final int TSTAMP_FIELD_NUMBER = 2;
   private int tstamp_;
   /**
@@ -163,6 +163,7 @@ public final class UserLoginC2S extends
     return tstamp_;
   }
 
+  // required string ticket = 3;
   public static final int TICKET_FIELD_NUMBER = 3;
   private java.lang.Object ticket_;
   /**
@@ -225,8 +226,7 @@ public final class UserLoginC2S extends
   private byte memoizedIsInitialized = -1;
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
-    if (isInitialized == 1) return true;
-    if (isInitialized == 0) return false;
+    if (isInitialized != -1) return isInitialized == 1;
 
     if (!hasAccid()) {
       memoizedIsInitialized = 0;
@@ -365,9 +365,8 @@ public final class UserLoginC2S extends
    * </pre>
    */
   public static final class Builder extends
-      com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:UserLoginC2S)
-      com.owl.card.common.protobuf.cs.UserLoginC2SOrBuilder {
+      com.google.protobuf.GeneratedMessage.Builder<Builder>
+     implements com.owl.card.common.protobuf.cs.UserLoginC2SOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.owl.card.common.protobuf.cs.CardGamePkt.internal_static_UserLoginC2S_descriptor;
@@ -512,6 +511,7 @@ public final class UserLoginC2S extends
     }
     private int bitField0_;
 
+    // required int32 accid = 1;
     private int accid_ ;
     /**
      * <code>required int32 accid = 1;</code>
@@ -560,6 +560,7 @@ public final class UserLoginC2S extends
       return this;
     }
 
+    // required int32 tstamp = 2;
     private int tstamp_ ;
     /**
      * <code>required int32 tstamp = 2;</code>
@@ -608,6 +609,7 @@ public final class UserLoginC2S extends
       return this;
     }
 
+    // required string ticket = 3;
     private java.lang.Object ticket_ = "";
     /**
      * <code>required string ticket = 3;</code>
@@ -629,12 +631,9 @@ public final class UserLoginC2S extends
     public java.lang.String getTicket() {
       java.lang.Object ref = ticket_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          ticket_ = s;
-        }
+        java.lang.String s = ((com.google.protobuf.ByteString) ref)
+            .toStringUtf8();
+        ticket_ = s;
         return s;
       } else {
         return (java.lang.String) ref;

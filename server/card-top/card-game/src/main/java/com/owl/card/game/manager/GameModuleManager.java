@@ -44,7 +44,7 @@ public class GameModuleManager {
 	public void init() {
 		GameServerInit serverInit = AppGameMaster.serverInit;
 
-		loginModule = registerModule(new LoginModule(serverInit.getAccountService()));
+		loginModule = registerModule(new LoginModule(serverInit.getAccountService(), serverInit.getRoleService()));
 	}
 
 }

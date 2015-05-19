@@ -3,24 +3,50 @@
 
 package com.owl.card.common.protobuf.cs;
 
-public interface UserLoginS2COrBuilder extends
-    // @@protoc_insertion_point(interface_extends:UserLoginS2C)
-    com.google.protobuf.MessageOrBuilder {
+public interface UserLoginS2COrBuilder
+    extends com.google.protobuf.MessageOrBuilder {
 
+  // required int32 rt = 1;
   /**
-   * <code>required int32 flag = 1;</code>
+   * <code>required int32 rt = 1;</code>
    *
    * <pre>
-   *0:验证错误 1:登录成功
+   * 错误码
    * </pre>
    */
-  boolean hasFlag();
+  boolean hasRt();
   /**
-   * <code>required int32 flag = 1;</code>
+   * <code>required int32 rt = 1;</code>
    *
    * <pre>
-   *0:验证错误 1:登录成功
+   * 错误码
    * </pre>
    */
-  int getFlag();
+  int getRt();
+
+  // optional .RoleInfoData roleInfo = 2;
+  /**
+   * <code>optional .RoleInfoData roleInfo = 2;</code>
+   *
+   * <pre>
+   * 玩家信息(失败则无)
+   * </pre>
+   */
+  boolean hasRoleInfo();
+  /**
+   * <code>optional .RoleInfoData roleInfo = 2;</code>
+   *
+   * <pre>
+   * 玩家信息(失败则无)
+   * </pre>
+   */
+  com.owl.card.common.protobuf.struct.RoleInfoData getRoleInfo();
+  /**
+   * <code>optional .RoleInfoData roleInfo = 2;</code>
+   *
+   * <pre>
+   * 玩家信息(失败则无)
+   * </pre>
+   */
+  com.owl.card.common.protobuf.struct.RoleInfoDataOrBuilder getRoleInfoOrBuilder();
 }

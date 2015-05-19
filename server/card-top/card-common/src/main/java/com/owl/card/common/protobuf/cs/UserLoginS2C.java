@@ -12,10 +12,9 @@ package com.owl.card.common.protobuf.cs;
  * 客户端请求登陆返回
  * </pre>
  */
-public final class UserLoginS2C extends
-    com.google.protobuf.GeneratedMessage implements
-    // @@protoc_insertion_point(message_implements:UserLoginS2C)
-    UserLoginS2COrBuilder {
+public  final class UserLoginS2C extends
+    com.google.protobuf.GeneratedMessage
+    implements UserLoginS2COrBuilder {
   // Use UserLoginS2C.newBuilder() to construct.
   private UserLoginS2C(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
     super(builder);
@@ -63,7 +62,20 @@ public final class UserLoginS2C extends
           }
           case 8: {
             bitField0_ |= 0x00000001;
-            flag_ = input.readInt32();
+            rt_ = input.readInt32();
+            break;
+          }
+          case 18: {
+            com.owl.card.common.protobuf.struct.RoleInfoData.Builder subBuilder = null;
+            if (((bitField0_ & 0x00000002) == 0x00000002)) {
+              subBuilder = roleInfo_.toBuilder();
+            }
+            roleInfo_ = input.readMessage(com.owl.card.common.protobuf.struct.RoleInfoData.PARSER, extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom(roleInfo_);
+              roleInfo_ = subBuilder.buildPartial();
+            }
+            bitField0_ |= 0x00000002;
             break;
           }
         }
@@ -106,41 +118,82 @@ public final class UserLoginS2C extends
   }
 
   private int bitField0_;
-  public static final int FLAG_FIELD_NUMBER = 1;
-  private int flag_;
+  // required int32 rt = 1;
+  public static final int RT_FIELD_NUMBER = 1;
+  private int rt_;
   /**
-   * <code>required int32 flag = 1;</code>
+   * <code>required int32 rt = 1;</code>
    *
    * <pre>
-   *0:验证错误 1:登录成功
+   * 错误码
    * </pre>
    */
-  public boolean hasFlag() {
+  public boolean hasRt() {
     return ((bitField0_ & 0x00000001) == 0x00000001);
   }
   /**
-   * <code>required int32 flag = 1;</code>
+   * <code>required int32 rt = 1;</code>
    *
    * <pre>
-   *0:验证错误 1:登录成功
+   * 错误码
    * </pre>
    */
-  public int getFlag() {
-    return flag_;
+  public int getRt() {
+    return rt_;
+  }
+
+  // optional .RoleInfoData roleInfo = 2;
+  public static final int ROLEINFO_FIELD_NUMBER = 2;
+  private com.owl.card.common.protobuf.struct.RoleInfoData roleInfo_;
+  /**
+   * <code>optional .RoleInfoData roleInfo = 2;</code>
+   *
+   * <pre>
+   * 玩家信息(失败则无)
+   * </pre>
+   */
+  public boolean hasRoleInfo() {
+    return ((bitField0_ & 0x00000002) == 0x00000002);
+  }
+  /**
+   * <code>optional .RoleInfoData roleInfo = 2;</code>
+   *
+   * <pre>
+   * 玩家信息(失败则无)
+   * </pre>
+   */
+  public com.owl.card.common.protobuf.struct.RoleInfoData getRoleInfo() {
+    return roleInfo_;
+  }
+  /**
+   * <code>optional .RoleInfoData roleInfo = 2;</code>
+   *
+   * <pre>
+   * 玩家信息(失败则无)
+   * </pre>
+   */
+  public com.owl.card.common.protobuf.struct.RoleInfoDataOrBuilder getRoleInfoOrBuilder() {
+    return roleInfo_;
   }
 
   private void initFields() {
-    flag_ = 0;
+    rt_ = 0;
+    roleInfo_ = com.owl.card.common.protobuf.struct.RoleInfoData.getDefaultInstance();
   }
   private byte memoizedIsInitialized = -1;
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
-    if (isInitialized == 1) return true;
-    if (isInitialized == 0) return false;
+    if (isInitialized != -1) return isInitialized == 1;
 
-    if (!hasFlag()) {
+    if (!hasRt()) {
       memoizedIsInitialized = 0;
       return false;
+    }
+    if (hasRoleInfo()) {
+      if (!getRoleInfo().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
     }
     memoizedIsInitialized = 1;
     return true;
@@ -150,7 +203,10 @@ public final class UserLoginS2C extends
                       throws java.io.IOException {
     getSerializedSize();
     if (((bitField0_ & 0x00000001) == 0x00000001)) {
-      output.writeInt32(1, flag_);
+      output.writeInt32(1, rt_);
+    }
+    if (((bitField0_ & 0x00000002) == 0x00000002)) {
+      output.writeMessage(2, roleInfo_);
     }
     getUnknownFields().writeTo(output);
   }
@@ -163,7 +219,11 @@ public final class UserLoginS2C extends
     size = 0;
     if (((bitField0_ & 0x00000001) == 0x00000001)) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(1, flag_);
+        .computeInt32Size(1, rt_);
+    }
+    if (((bitField0_ & 0x00000002) == 0x00000002)) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(2, roleInfo_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSerializedSize = size;
@@ -253,9 +313,8 @@ public final class UserLoginS2C extends
    * </pre>
    */
   public static final class Builder extends
-      com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:UserLoginS2C)
-      com.owl.card.common.protobuf.cs.UserLoginS2COrBuilder {
+      com.google.protobuf.GeneratedMessage.Builder<Builder>
+     implements com.owl.card.common.protobuf.cs.UserLoginS2COrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.owl.card.common.protobuf.cs.CardGamePkt.internal_static_UserLoginS2C_descriptor;
@@ -280,6 +339,7 @@ public final class UserLoginS2C extends
     }
     private void maybeForceBuilderInitialization() {
       if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        getRoleInfoFieldBuilder();
       }
     }
     private static Builder create() {
@@ -288,8 +348,14 @@ public final class UserLoginS2C extends
 
     public Builder clear() {
       super.clear();
-      flag_ = 0;
+      rt_ = 0;
       bitField0_ = (bitField0_ & ~0x00000001);
+      if (roleInfoBuilder_ == null) {
+        roleInfo_ = com.owl.card.common.protobuf.struct.RoleInfoData.getDefaultInstance();
+      } else {
+        roleInfoBuilder_.clear();
+      }
+      bitField0_ = (bitField0_ & ~0x00000002);
       return this;
     }
 
@@ -321,7 +387,15 @@ public final class UserLoginS2C extends
       if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
         to_bitField0_ |= 0x00000001;
       }
-      result.flag_ = flag_;
+      result.rt_ = rt_;
+      if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+        to_bitField0_ |= 0x00000002;
+      }
+      if (roleInfoBuilder_ == null) {
+        result.roleInfo_ = roleInfo_;
+      } else {
+        result.roleInfo_ = roleInfoBuilder_.build();
+      }
       result.bitField0_ = to_bitField0_;
       onBuilt();
       return result;
@@ -338,17 +412,26 @@ public final class UserLoginS2C extends
 
     public Builder mergeFrom(com.owl.card.common.protobuf.cs.UserLoginS2C other) {
       if (other == com.owl.card.common.protobuf.cs.UserLoginS2C.getDefaultInstance()) return this;
-      if (other.hasFlag()) {
-        setFlag(other.getFlag());
+      if (other.hasRt()) {
+        setRt(other.getRt());
+      }
+      if (other.hasRoleInfo()) {
+        mergeRoleInfo(other.getRoleInfo());
       }
       this.mergeUnknownFields(other.getUnknownFields());
       return this;
     }
 
     public final boolean isInitialized() {
-      if (!hasFlag()) {
+      if (!hasRt()) {
         
         return false;
+      }
+      if (hasRoleInfo()) {
+        if (!getRoleInfo().isInitialized()) {
+          
+          return false;
+        }
       }
       return true;
     }
@@ -372,52 +455,206 @@ public final class UserLoginS2C extends
     }
     private int bitField0_;
 
-    private int flag_ ;
+    // required int32 rt = 1;
+    private int rt_ ;
     /**
-     * <code>required int32 flag = 1;</code>
+     * <code>required int32 rt = 1;</code>
      *
      * <pre>
-     *0:验证错误 1:登录成功
+     * 错误码
      * </pre>
      */
-    public boolean hasFlag() {
+    public boolean hasRt() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required int32 flag = 1;</code>
+     * <code>required int32 rt = 1;</code>
      *
      * <pre>
-     *0:验证错误 1:登录成功
+     * 错误码
      * </pre>
      */
-    public int getFlag() {
-      return flag_;
+    public int getRt() {
+      return rt_;
     }
     /**
-     * <code>required int32 flag = 1;</code>
+     * <code>required int32 rt = 1;</code>
      *
      * <pre>
-     *0:验证错误 1:登录成功
+     * 错误码
      * </pre>
      */
-    public Builder setFlag(int value) {
+    public Builder setRt(int value) {
       bitField0_ |= 0x00000001;
-      flag_ = value;
+      rt_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>required int32 flag = 1;</code>
+     * <code>required int32 rt = 1;</code>
      *
      * <pre>
-     *0:验证错误 1:登录成功
+     * 错误码
      * </pre>
      */
-    public Builder clearFlag() {
+    public Builder clearRt() {
       bitField0_ = (bitField0_ & ~0x00000001);
-      flag_ = 0;
+      rt_ = 0;
       onChanged();
       return this;
+    }
+
+    // optional .RoleInfoData roleInfo = 2;
+    private com.owl.card.common.protobuf.struct.RoleInfoData roleInfo_ = com.owl.card.common.protobuf.struct.RoleInfoData.getDefaultInstance();
+    private com.google.protobuf.SingleFieldBuilder<
+        com.owl.card.common.protobuf.struct.RoleInfoData, com.owl.card.common.protobuf.struct.RoleInfoData.Builder, com.owl.card.common.protobuf.struct.RoleInfoDataOrBuilder> roleInfoBuilder_;
+    /**
+     * <code>optional .RoleInfoData roleInfo = 2;</code>
+     *
+     * <pre>
+     * 玩家信息(失败则无)
+     * </pre>
+     */
+    public boolean hasRoleInfo() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional .RoleInfoData roleInfo = 2;</code>
+     *
+     * <pre>
+     * 玩家信息(失败则无)
+     * </pre>
+     */
+    public com.owl.card.common.protobuf.struct.RoleInfoData getRoleInfo() {
+      if (roleInfoBuilder_ == null) {
+        return roleInfo_;
+      } else {
+        return roleInfoBuilder_.getMessage();
+      }
+    }
+    /**
+     * <code>optional .RoleInfoData roleInfo = 2;</code>
+     *
+     * <pre>
+     * 玩家信息(失败则无)
+     * </pre>
+     */
+    public Builder setRoleInfo(com.owl.card.common.protobuf.struct.RoleInfoData value) {
+      if (roleInfoBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        roleInfo_ = value;
+        onChanged();
+      } else {
+        roleInfoBuilder_.setMessage(value);
+      }
+      bitField0_ |= 0x00000002;
+      return this;
+    }
+    /**
+     * <code>optional .RoleInfoData roleInfo = 2;</code>
+     *
+     * <pre>
+     * 玩家信息(失败则无)
+     * </pre>
+     */
+    public Builder setRoleInfo(
+        com.owl.card.common.protobuf.struct.RoleInfoData.Builder builderForValue) {
+      if (roleInfoBuilder_ == null) {
+        roleInfo_ = builderForValue.build();
+        onChanged();
+      } else {
+        roleInfoBuilder_.setMessage(builderForValue.build());
+      }
+      bitField0_ |= 0x00000002;
+      return this;
+    }
+    /**
+     * <code>optional .RoleInfoData roleInfo = 2;</code>
+     *
+     * <pre>
+     * 玩家信息(失败则无)
+     * </pre>
+     */
+    public Builder mergeRoleInfo(com.owl.card.common.protobuf.struct.RoleInfoData value) {
+      if (roleInfoBuilder_ == null) {
+        if (((bitField0_ & 0x00000002) == 0x00000002) &&
+            roleInfo_ != com.owl.card.common.protobuf.struct.RoleInfoData.getDefaultInstance()) {
+          roleInfo_ =
+            com.owl.card.common.protobuf.struct.RoleInfoData.newBuilder(roleInfo_).mergeFrom(value).buildPartial();
+        } else {
+          roleInfo_ = value;
+        }
+        onChanged();
+      } else {
+        roleInfoBuilder_.mergeFrom(value);
+      }
+      bitField0_ |= 0x00000002;
+      return this;
+    }
+    /**
+     * <code>optional .RoleInfoData roleInfo = 2;</code>
+     *
+     * <pre>
+     * 玩家信息(失败则无)
+     * </pre>
+     */
+    public Builder clearRoleInfo() {
+      if (roleInfoBuilder_ == null) {
+        roleInfo_ = com.owl.card.common.protobuf.struct.RoleInfoData.getDefaultInstance();
+        onChanged();
+      } else {
+        roleInfoBuilder_.clear();
+      }
+      bitField0_ = (bitField0_ & ~0x00000002);
+      return this;
+    }
+    /**
+     * <code>optional .RoleInfoData roleInfo = 2;</code>
+     *
+     * <pre>
+     * 玩家信息(失败则无)
+     * </pre>
+     */
+    public com.owl.card.common.protobuf.struct.RoleInfoData.Builder getRoleInfoBuilder() {
+      bitField0_ |= 0x00000002;
+      onChanged();
+      return getRoleInfoFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>optional .RoleInfoData roleInfo = 2;</code>
+     *
+     * <pre>
+     * 玩家信息(失败则无)
+     * </pre>
+     */
+    public com.owl.card.common.protobuf.struct.RoleInfoDataOrBuilder getRoleInfoOrBuilder() {
+      if (roleInfoBuilder_ != null) {
+        return roleInfoBuilder_.getMessageOrBuilder();
+      } else {
+        return roleInfo_;
+      }
+    }
+    /**
+     * <code>optional .RoleInfoData roleInfo = 2;</code>
+     *
+     * <pre>
+     * 玩家信息(失败则无)
+     * </pre>
+     */
+    private com.google.protobuf.SingleFieldBuilder<
+        com.owl.card.common.protobuf.struct.RoleInfoData, com.owl.card.common.protobuf.struct.RoleInfoData.Builder, com.owl.card.common.protobuf.struct.RoleInfoDataOrBuilder> 
+        getRoleInfoFieldBuilder() {
+      if (roleInfoBuilder_ == null) {
+        roleInfoBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+            com.owl.card.common.protobuf.struct.RoleInfoData, com.owl.card.common.protobuf.struct.RoleInfoData.Builder, com.owl.card.common.protobuf.struct.RoleInfoDataOrBuilder>(
+                roleInfo_,
+                getParentForChildren(),
+                isClean());
+        roleInfo_ = null;
+      }
+      return roleInfoBuilder_;
     }
 
     // @@protoc_insertion_point(builder_scope:UserLoginS2C)
