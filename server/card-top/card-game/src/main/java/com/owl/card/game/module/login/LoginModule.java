@@ -5,6 +5,8 @@ import java.util.Date;
 import org.apache.log4j.Logger;
 
 import com.owl.card.common.base.BaseModule;
+import com.owl.card.common.config.AppConfig;
+import com.owl.card.common.config.proto.CardProto;
 import com.owl.card.common.define.ClientErrCode;
 import com.owl.card.common.define.ClientMsgTypeDefine;
 import com.owl.card.common.define.SexDefine;
@@ -70,6 +72,9 @@ public class LoginModule extends BaseModule implements LoginModuleInterface {
 		if (role == null) {
 			role = new Role(roleId, SexDefine.SEX_MALE, 1, 0, 1000, 100, 0);
 			roleService.createRole(role);
+
+			// 初始化玩家数据
+			initRole(role);
 		} else {
 			roleService.updateLastLoginDate(roleId, new Date());
 		}
@@ -81,5 +86,19 @@ public class LoginModule extends BaseModule implements LoginModuleInterface {
 		}
 
 		session.sendMsg(resp.build());
+	}
+
+	private void initRole(Role role) {
+		// 赠送卡牌
+		int[] giftCards = { 1, 2, 3, 4 };
+
+		for (int cardProtoId : giftCards) {
+			CardProto cardProto = AppConfig.cfgs.cardProtoCache.getById(cardProtoId);
+
+			if (cardProto != null) {
+				
+			}
+		}
+
 	}
 }

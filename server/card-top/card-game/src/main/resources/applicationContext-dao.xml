@@ -57,8 +57,8 @@
 				<prop key="hibernate.show_sql">true</prop>-->
 				<!-- 将SQL脚本进行格式化后再输出
 				<prop key="hibernate.format_sql">true</prop> -->
-				<!-- 是否根据需要每次自动创建数据库，注意，在正式环境中一定不能设置 
-				<prop key="hibernate.hbm2ddl.auto">create</prop> -->
+				<!-- 是否根据需要每次自动创建数据库，注意，在正式环境中一定不能设置 --> 
+				<prop key="hibernate.hbm2ddl.auto">create</prop> 
 			</props>
 		</property>
 	</bean>

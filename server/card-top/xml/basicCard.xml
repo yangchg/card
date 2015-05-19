@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<r>
+	<l id="1" name="斯巴达" type="1" quality="1" bigCardImage="0" smallCardImage="0" initialUpperlimitLevel="0:2" Lv1HP="3" Lv1Skill="0" Lv2HP="3" Lv2Skill="0" Lv3HP="0" Lv3Skill="0" Lv4HP="0" Lv4Skill="0" characteristic="0" lines="0"/>
+	<l id="2" name="玛那小荳荳" type="1" quality="2" bigCardImage="0" smallCardImage="0" initialUpperlimitLevel="0:2" Lv1HP="4" Lv1Skill="0" Lv2HP="4" Lv2Skill="0" Lv3HP="0" Lv3Skill="0" Lv4HP="0" Lv4Skill="0" characteristic="0" lines="0"/>
+	<l id="3" name="波普鲁" type="1" quality="3" bigCardImage="0" smallCardImage="0" initialUpperlimitLevel="0:2" Lv1HP="5" Lv1Skill="0" Lv2HP="5" Lv2Skill="0" Lv3HP="0" Lv3Skill="0" Lv4HP="0" Lv4Skill="0" characteristic="0" lines="0"/>
+	<l id="4" name="章鱼克" type="1" quality="4" bigCardImage="0" smallCardImage="0" initialUpperlimitLevel="0:2" Lv1HP="5" Lv1Skill="0" Lv2HP="5" Lv2Skill="0" Lv3HP="0" Lv3Skill="0" Lv4HP="0" Lv4Skill="0" characteristic="0" lines="0"/>
+</r>
