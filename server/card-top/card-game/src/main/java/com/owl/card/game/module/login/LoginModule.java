@@ -15,6 +15,7 @@ import com.owl.card.common.domain.Role;
 import com.owl.card.common.msg.TopMsg;
 import com.owl.card.common.protobuf.cs.UserLoginC2S;
 import com.owl.card.game.db.service.game.AccountService;
+import com.owl.card.game.db.service.game.CardService;
 import com.owl.card.game.db.service.game.RoleService;
 import com.owl.card.game.manager.GameCallbackManager;
 import com.owl.card.game.module.login.interfaces.LoginModuleInterface;
@@ -27,10 +28,12 @@ public class LoginModule extends BaseModule implements LoginModuleInterface {
 
 	private AccountService accountService;
 	private RoleService roleService;
+	private CardService cardService;
 
-	public LoginModule(AccountService accountService, RoleService roleService) {
+	public LoginModule(AccountService accountService, RoleService roleService, CardService cardService) {
 		this.accountService = accountService;
 		this.roleService = roleService;
+		this.cardService = cardService;
 	}
 
 	@Override
@@ -96,9 +99,8 @@ public class LoginModule extends BaseModule implements LoginModuleInterface {
 			CardProto cardProto = AppConfig.cfgs.cardProtoCache.getById(cardProtoId);
 
 			if (cardProto != null) {
-				
+				cardService.addCard(role.getId(), cardProtoId, 1);
 			}
 		}
-
 	}
 }

@@ -56,6 +56,12 @@ public class Card implements Domain<Card> {
 
 	}
 
+	public Card(int protoId, int num, long roleId) {
+		this.protoId = protoId;
+		this.num = num;
+		this.roleId = roleId;
+	}
+
 	@Override
 	public void updateSet(Card domain) {
 		Card cardData = domain;
