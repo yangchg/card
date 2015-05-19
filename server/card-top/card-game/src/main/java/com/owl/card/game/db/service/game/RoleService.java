@@ -1,5 +1,7 @@
 package com.owl.card.game.db.service.game;
 
+import java.util.Date;
+
 import com.owl.card.common.domain.Role;
 
 public interface RoleService {
@@ -19,5 +21,13 @@ public interface RoleService {
 	 * @return
 	 */
 	long createRole(Role role);
+
+	/**
+	 * 更新最近登陆时间
+	 * 
+	 * @param rolId
+	 * @param date
+	 */
+	void updateLastLoginDate(long rolId, Date date);
 
 }

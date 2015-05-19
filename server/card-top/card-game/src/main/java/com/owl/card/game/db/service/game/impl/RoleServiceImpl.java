@@ -1,5 +1,7 @@
 package com.owl.card.game.db.service.game.impl;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,5 +23,10 @@ public class RoleServiceImpl implements RoleService {
 	@Override
 	public long createRole(Role role) {
 		return roleDao.save(role);
+	}
+
+	@Override
+	public void updateLastLoginDate(long rolId, Date date) {
+		roleDao.updateLastLoginDate(rolId, date);
 	}
 }

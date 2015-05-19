@@ -1,19 +1,22 @@
 package com.owl.card.game.module.login;
 
+import java.util.Date;
+
 import org.apache.log4j.Logger;
 
 import com.owl.card.common.base.BaseModule;
+import com.owl.card.common.define.ClientErrCode;
 import com.owl.card.common.define.ClientMsgTypeDefine;
 import com.owl.card.common.define.SexDefine;
 import com.owl.card.common.domain.Account;
 import com.owl.card.common.domain.Role;
 import com.owl.card.common.msg.TopMsg;
 import com.owl.card.common.protobuf.cs.UserLoginC2S;
-import com.owl.card.common.protobuf.cs.UserLoginS2C;
 import com.owl.card.game.db.service.game.AccountService;
 import com.owl.card.game.db.service.game.RoleService;
 import com.owl.card.game.manager.GameCallbackManager;
 import com.owl.card.game.module.login.interfaces.LoginModuleInterface;
+import com.owl.card.game.module.login.resp.UserLoginS2CResp;
 import com.owl.card.game.obj.GameSession;
 
 public class LoginModule extends BaseModule implements LoginModuleInterface {
@@ -67,14 +70,17 @@ public class LoginModule extends BaseModule implements LoginModuleInterface {
 		if (role == null) {
 			role = new Role(roleId, SexDefine.SEX_MALE, 1, 0, 1000, 100, 0);
 			roleService.createRole(role);
+		} else {
+			roleService.updateLastLoginDate(roleId, new Date());
 		}
 
-		UserLoginS2C.Builder userLoginS2C = UserLoginS2C.newBuilder();
+		// 返回客户端
+		UserLoginS2CResp resp = new UserLoginS2CResp(ClientErrCode.RT_SUCC);
 
-		TopMsg.Builder sendTopMsgBuilder = TopMsg.newBuilder();
-		sendTopMsgBuilder.setMsgType(11);
-		sendTopMsgBuilder.setMessageLite(userLoginS2C.build());
-		TopMsg sendTopMsg = sendTopMsgBuilder.build();
-		session.sendMsg(sendTopMsg);
+		if (role != null) {
+			resp.addRoleInfo(role);
+		}
+
+		session.sendMsg(resp.build());
 	}
 }

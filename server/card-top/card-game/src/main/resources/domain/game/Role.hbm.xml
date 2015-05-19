@@ -33,5 +33,9 @@
 			<column name="point" />
 		</property>
 
+		<property name="lastLoginDate" type="java.util.Date">
+			<column name="lastLoginDate" not-null="true" />
+		</property>
+
 	</class>
 </hibernate-mapping>

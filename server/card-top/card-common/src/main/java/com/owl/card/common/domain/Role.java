@@ -1,5 +1,7 @@
 package com.owl.card.common.domain;
 
+import java.util.Date;
+
 import com.owl.card.common.persistence.Domain;
 
 public class Role implements Domain<Role> {
@@ -14,6 +16,8 @@ public class Role implements Domain<Role> {
 	private int gold; // 金币
 	private int diamond; // 钻石
 	private int point; // 积分
+
+	private Date lastLoginDate; // 最近登陆时间
 
 	public long getVersion() {
 		return version;
@@ -88,6 +92,14 @@ public class Role implements Domain<Role> {
 		this.exp = exp;
 	}
 
+	public Date getLastLoginDate() {
+		return lastLoginDate;
+	}
+
+	public void setLastLoginDate(Date lastLoginDate) {
+		this.lastLoginDate = lastLoginDate;
+	}
+
 	public Role() {
 
 	}
@@ -100,6 +112,7 @@ public class Role implements Domain<Role> {
 		this.gold = gold;
 		this.diamond = diamond;
 		this.point = point;
+		this.lastLoginDate = new Date();
 	}
 
 	@Override
@@ -112,6 +125,7 @@ public class Role implements Domain<Role> {
 		this.gold = role.getGold();
 		this.diamond = role.getDiamond();
 		this.point = role.getPoint();
+		this.lastLoginDate = role.getLastLoginDate();
 	}
 
 	@Override
