@@ -8,12 +8,12 @@ public final class CardGamePkt {
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
   }
-  static com.google.protobuf.Descriptors.Descriptor
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_UserLoginC2S_descriptor;
   static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_UserLoginC2S_fieldAccessorTable;
-  static com.google.protobuf.Descriptors.Descriptor
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_UserLoginS2C_descriptor;
   static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -35,30 +35,31 @@ public final class CardGamePkt {
       "amePktP\001"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
-      new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
-        public com.google.protobuf.ExtensionRegistry assignDescriptors(
-            com.google.protobuf.Descriptors.FileDescriptor root) {
-          descriptor = root;
-          internal_static_UserLoginC2S_descriptor =
-            getDescriptor().getMessageTypes().get(0);
-          internal_static_UserLoginC2S_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_UserLoginC2S_descriptor,
-              new java.lang.String[] { "Accid", "Tstamp", "Ticket", });
-          internal_static_UserLoginS2C_descriptor =
-            getDescriptor().getMessageTypes().get(1);
-          internal_static_UserLoginS2C_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_UserLoginS2C_descriptor,
-              new java.lang.String[] { "Rt", "RoleInfo", });
-          return null;
-        }
-      };
+        new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
+          public com.google.protobuf.ExtensionRegistry assignDescriptors(
+              com.google.protobuf.Descriptors.FileDescriptor root) {
+            descriptor = root;
+            return null;
+          }
+        };
     com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           com.owl.card.common.protobuf.struct.CardStructPkt.getDescriptor(),
         }, assigner);
+    internal_static_UserLoginC2S_descriptor =
+      getDescriptor().getMessageTypes().get(0);
+    internal_static_UserLoginC2S_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_UserLoginC2S_descriptor,
+        new java.lang.String[] { "Accid", "Tstamp", "Ticket", });
+    internal_static_UserLoginS2C_descriptor =
+      getDescriptor().getMessageTypes().get(1);
+    internal_static_UserLoginS2C_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_UserLoginS2C_descriptor,
+        new java.lang.String[] { "Rt", "RoleInfo", });
+    com.owl.card.common.protobuf.struct.CardStructPkt.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

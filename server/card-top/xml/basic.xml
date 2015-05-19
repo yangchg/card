@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<r>
+	<l id="groupEditCardUpperlimit" desc="卡组编辑卡牌张数上限（初级规则、中级规则、高级规则）" value="20:20:30"/>
+</r>

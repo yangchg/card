@@ -76,7 +76,6 @@ public class LoginModule extends BaseModule implements LoginModuleInterface {
 
 		// 返回客户端
 		UserLoginS2CResp resp = new UserLoginS2CResp(ClientErrCode.RT_SUCC);
-
 		if (role != null) {
 			resp.addRoleInfo(role);
 		}
