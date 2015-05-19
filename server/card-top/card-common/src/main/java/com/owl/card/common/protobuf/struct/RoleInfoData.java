@@ -10,9 +10,10 @@ package com.owl.card.common.protobuf.struct;
  * 玩家信息
  * </pre>
  */
-public  final class RoleInfoData extends
-    com.google.protobuf.GeneratedMessage
-    implements RoleInfoDataOrBuilder {
+public final class RoleInfoData extends
+    com.google.protobuf.GeneratedMessage implements
+    // @@protoc_insertion_point(message_implements:RoleInfoData)
+    RoleInfoDataOrBuilder {
   // Use RoleInfoData.newBuilder() to construct.
   private RoleInfoData(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
     super(builder);
@@ -59,8 +60,9 @@ public  final class RoleInfoData extends
             break;
           }
           case 10: {
+            com.google.protobuf.ByteString bs = input.readBytes();
             bitField0_ |= 0x00000001;
-            name_ = input.readBytes();
+            name_ = bs;
             break;
           }
           case 16: {
@@ -118,7 +120,6 @@ public  final class RoleInfoData extends
   }
 
   private int bitField0_;
-  // optional string name = 1;
   public static final int NAME_FIELD_NUMBER = 1;
   private java.lang.Object name_;
   /**
@@ -173,7 +174,6 @@ public  final class RoleInfoData extends
     }
   }
 
-  // required int32 gold = 2;
   public static final int GOLD_FIELD_NUMBER = 2;
   private int gold_;
   /**
@@ -197,7 +197,6 @@ public  final class RoleInfoData extends
     return gold_;
   }
 
-  // required int32 diamond = 3;
   public static final int DIAMOND_FIELD_NUMBER = 3;
   private int diamond_;
   /**
@@ -221,7 +220,6 @@ public  final class RoleInfoData extends
     return diamond_;
   }
 
-  // required int32 point = 4;
   public static final int POINT_FIELD_NUMBER = 4;
   private int point_;
   /**
@@ -254,7 +252,8 @@ public  final class RoleInfoData extends
   private byte memoizedIsInitialized = -1;
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
-    if (isInitialized != -1) return isInitialized == 1;
+    if (isInitialized == 1) return true;
+    if (isInitialized == 0) return false;
 
     if (!hasGold()) {
       memoizedIsInitialized = 0;
@@ -398,8 +397,9 @@ public  final class RoleInfoData extends
    * </pre>
    */
   public static final class Builder extends
-      com.google.protobuf.GeneratedMessage.Builder<Builder>
-     implements com.owl.card.common.protobuf.struct.RoleInfoDataOrBuilder {
+      com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+      // @@protoc_insertion_point(builder_implements:RoleInfoData)
+      com.owl.card.common.protobuf.struct.RoleInfoDataOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.owl.card.common.protobuf.struct.CardStructPkt.internal_static_RoleInfoData_descriptor;
@@ -553,7 +553,6 @@ public  final class RoleInfoData extends
     }
     private int bitField0_;
 
-    // optional string name = 1;
     private java.lang.Object name_ = "";
     /**
      * <code>optional string name = 1;</code>
@@ -575,9 +574,12 @@ public  final class RoleInfoData extends
     public java.lang.String getName() {
       java.lang.Object ref = name_;
       if (!(ref instanceof java.lang.String)) {
-        java.lang.String s = ((com.google.protobuf.ByteString) ref)
-            .toStringUtf8();
-        name_ = s;
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          name_ = s;
+        }
         return s;
       } else {
         return (java.lang.String) ref;
@@ -651,7 +653,6 @@ public  final class RoleInfoData extends
       return this;
     }
 
-    // required int32 gold = 2;
     private int gold_ ;
     /**
      * <code>required int32 gold = 2;</code>
@@ -700,7 +701,6 @@ public  final class RoleInfoData extends
       return this;
     }
 
-    // required int32 diamond = 3;
     private int diamond_ ;
     /**
      * <code>required int32 diamond = 3;</code>
@@ -749,7 +749,6 @@ public  final class RoleInfoData extends
       return this;
     }
 
-    // required int32 point = 4;
     private int point_ ;
     /**
      * <code>required int32 point = 4;</code>

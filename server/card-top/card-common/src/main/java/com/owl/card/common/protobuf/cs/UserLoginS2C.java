@@ -12,9 +12,10 @@ package com.owl.card.common.protobuf.cs;
  * 客户端请求登陆返回
  * </pre>
  */
-public  final class UserLoginS2C extends
-    com.google.protobuf.GeneratedMessage
-    implements UserLoginS2COrBuilder {
+public final class UserLoginS2C extends
+    com.google.protobuf.GeneratedMessage implements
+    // @@protoc_insertion_point(message_implements:UserLoginS2C)
+    UserLoginS2COrBuilder {
   // Use UserLoginS2C.newBuilder() to construct.
   private UserLoginS2C(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
     super(builder);
@@ -118,7 +119,6 @@ public  final class UserLoginS2C extends
   }
 
   private int bitField0_;
-  // required int32 rt = 1;
   public static final int RT_FIELD_NUMBER = 1;
   private int rt_;
   /**
@@ -142,7 +142,6 @@ public  final class UserLoginS2C extends
     return rt_;
   }
 
-  // optional .RoleInfoData roleInfo = 2;
   public static final int ROLEINFO_FIELD_NUMBER = 2;
   private com.owl.card.common.protobuf.struct.RoleInfoData roleInfo_;
   /**
@@ -183,7 +182,8 @@ public  final class UserLoginS2C extends
   private byte memoizedIsInitialized = -1;
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
-    if (isInitialized != -1) return isInitialized == 1;
+    if (isInitialized == 1) return true;
+    if (isInitialized == 0) return false;
 
     if (!hasRt()) {
       memoizedIsInitialized = 0;
@@ -313,8 +313,9 @@ public  final class UserLoginS2C extends
    * </pre>
    */
   public static final class Builder extends
-      com.google.protobuf.GeneratedMessage.Builder<Builder>
-     implements com.owl.card.common.protobuf.cs.UserLoginS2COrBuilder {
+      com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+      // @@protoc_insertion_point(builder_implements:UserLoginS2C)
+      com.owl.card.common.protobuf.cs.UserLoginS2COrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.owl.card.common.protobuf.cs.CardGamePkt.internal_static_UserLoginS2C_descriptor;
@@ -455,7 +456,6 @@ public  final class UserLoginS2C extends
     }
     private int bitField0_;
 
-    // required int32 rt = 1;
     private int rt_ ;
     /**
      * <code>required int32 rt = 1;</code>
@@ -504,7 +504,6 @@ public  final class UserLoginS2C extends
       return this;
     }
 
-    // optional .RoleInfoData roleInfo = 2;
     private com.owl.card.common.protobuf.struct.RoleInfoData roleInfo_ = com.owl.card.common.protobuf.struct.RoleInfoData.getDefaultInstance();
     private com.google.protobuf.SingleFieldBuilder<
         com.owl.card.common.protobuf.struct.RoleInfoData, com.owl.card.common.protobuf.struct.RoleInfoData.Builder, com.owl.card.common.protobuf.struct.RoleInfoDataOrBuilder> roleInfoBuilder_;
@@ -649,7 +648,7 @@ public  final class UserLoginS2C extends
       if (roleInfoBuilder_ == null) {
         roleInfoBuilder_ = new com.google.protobuf.SingleFieldBuilder<
             com.owl.card.common.protobuf.struct.RoleInfoData, com.owl.card.common.protobuf.struct.RoleInfoData.Builder, com.owl.card.common.protobuf.struct.RoleInfoDataOrBuilder>(
-                roleInfo_,
+                getRoleInfo(),
                 getParentForChildren(),
                 isClean());
         roleInfo_ = null;

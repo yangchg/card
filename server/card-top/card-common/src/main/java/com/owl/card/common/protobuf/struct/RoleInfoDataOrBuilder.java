@@ -3,10 +3,10 @@
 
 package com.owl.card.common.protobuf.struct;
 
-public interface RoleInfoDataOrBuilder
-    extends com.google.protobuf.MessageOrBuilder {
+public interface RoleInfoDataOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:RoleInfoData)
+    com.google.protobuf.MessageOrBuilder {
 
-  // optional string name = 1;
   /**
    * <code>optional string name = 1;</code>
    *
@@ -33,7 +33,6 @@ public interface RoleInfoDataOrBuilder
   com.google.protobuf.ByteString
       getNameBytes();
 
-  // required int32 gold = 2;
   /**
    * <code>required int32 gold = 2;</code>
    *
@@ -51,7 +50,6 @@ public interface RoleInfoDataOrBuilder
    */
   int getGold();
 
-  // required int32 diamond = 3;
   /**
    * <code>required int32 diamond = 3;</code>
    *
@@ -69,7 +67,6 @@ public interface RoleInfoDataOrBuilder
    */
   int getDiamond();
 
-  // required int32 point = 4;
   /**
    * <code>required int32 point = 4;</code>
    *
