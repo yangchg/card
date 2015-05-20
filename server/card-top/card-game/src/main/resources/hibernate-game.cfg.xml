@@ -8,6 +8,8 @@
 		<mapping resource="domain/game/Account.hbm.xml" />
 		<mapping resource="domain/game/Role.hbm.xml" />
 		<mapping resource="domain/game/Card.hbm.xml" />
+		<mapping resource="domain/game/CardGroup.hbm.xml" />
+		<mapping resource="domain/game/GroupCard.hbm.xml" />
 
 	</session-factory>
 </hibernate-configuration>

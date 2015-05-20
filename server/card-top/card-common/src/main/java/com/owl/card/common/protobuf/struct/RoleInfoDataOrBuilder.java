@@ -3,10 +3,10 @@
 
 package com.owl.card.common.protobuf.struct;
 
-public interface RoleInfoDataOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:RoleInfoData)
-    com.google.protobuf.MessageOrBuilder {
+public interface RoleInfoDataOrBuilder
+    extends com.google.protobuf.MessageOrBuilder {
 
+  // optional string name = 1;
   /**
    * <code>optional string name = 1;</code>
    *
@@ -33,6 +33,7 @@ public interface RoleInfoDataOrBuilder extends
   com.google.protobuf.ByteString
       getNameBytes();
 
+  // required int32 gold = 2;
   /**
    * <code>required int32 gold = 2;</code>
    *
@@ -50,6 +51,7 @@ public interface RoleInfoDataOrBuilder extends
    */
   int getGold();
 
+  // required int32 diamond = 3;
   /**
    * <code>required int32 diamond = 3;</code>
    *
@@ -67,6 +69,7 @@ public interface RoleInfoDataOrBuilder extends
    */
   int getDiamond();
 
+  // required int32 point = 4;
   /**
    * <code>required int32 point = 4;</code>
    *
@@ -83,4 +86,94 @@ public interface RoleInfoDataOrBuilder extends
    * </pre>
    */
   int getPoint();
+
+  // repeated .CardInfo card = 5;
+  /**
+   * <code>repeated .CardInfo card = 5;</code>
+   *
+   * <pre>
+   * 卡牌信息
+   * </pre>
+   */
+  java.util.List<com.owl.card.common.protobuf.struct.CardInfo> 
+      getCardList();
+  /**
+   * <code>repeated .CardInfo card = 5;</code>
+   *
+   * <pre>
+   * 卡牌信息
+   * </pre>
+   */
+  com.owl.card.common.protobuf.struct.CardInfo getCard(int index);
+  /**
+   * <code>repeated .CardInfo card = 5;</code>
+   *
+   * <pre>
+   * 卡牌信息
+   * </pre>
+   */
+  int getCardCount();
+  /**
+   * <code>repeated .CardInfo card = 5;</code>
+   *
+   * <pre>
+   * 卡牌信息
+   * </pre>
+   */
+  java.util.List<? extends com.owl.card.common.protobuf.struct.CardInfoOrBuilder> 
+      getCardOrBuilderList();
+  /**
+   * <code>repeated .CardInfo card = 5;</code>
+   *
+   * <pre>
+   * 卡牌信息
+   * </pre>
+   */
+  com.owl.card.common.protobuf.struct.CardInfoOrBuilder getCardOrBuilder(
+      int index);
+
+  // repeated .CardGroupInfo group = 6;
+  /**
+   * <code>repeated .CardGroupInfo group = 6;</code>
+   *
+   * <pre>
+   * 卡组信息
+   * </pre>
+   */
+  java.util.List<com.owl.card.common.protobuf.struct.CardGroupInfo> 
+      getGroupList();
+  /**
+   * <code>repeated .CardGroupInfo group = 6;</code>
+   *
+   * <pre>
+   * 卡组信息
+   * </pre>
+   */
+  com.owl.card.common.protobuf.struct.CardGroupInfo getGroup(int index);
+  /**
+   * <code>repeated .CardGroupInfo group = 6;</code>
+   *
+   * <pre>
+   * 卡组信息
+   * </pre>
+   */
+  int getGroupCount();
+  /**
+   * <code>repeated .CardGroupInfo group = 6;</code>
+   *
+   * <pre>
+   * 卡组信息
+   * </pre>
+   */
+  java.util.List<? extends com.owl.card.common.protobuf.struct.CardGroupInfoOrBuilder> 
+      getGroupOrBuilderList();
+  /**
+   * <code>repeated .CardGroupInfo group = 6;</code>
+   *
+   * <pre>
+   * 卡组信息
+   * </pre>
+   */
+  com.owl.card.common.protobuf.struct.CardGroupInfoOrBuilder getGroupOrBuilder(
+      int index);
 }

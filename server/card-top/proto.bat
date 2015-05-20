@@ -1,7 +1,7 @@
 e:
 cd %~dp0
 cd ../../../
-cd card_res
+cd card_game
 cd proto
 
 set Path=%Path%;%cd%

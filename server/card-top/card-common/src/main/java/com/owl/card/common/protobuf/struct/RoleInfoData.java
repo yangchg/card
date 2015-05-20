@@ -10,10 +10,9 @@ package com.owl.card.common.protobuf.struct;
  * 玩家信息
  * </pre>
  */
-public final class RoleInfoData extends
-    com.google.protobuf.GeneratedMessage implements
-    // @@protoc_insertion_point(message_implements:RoleInfoData)
-    RoleInfoDataOrBuilder {
+public  final class RoleInfoData extends
+    com.google.protobuf.GeneratedMessage
+    implements RoleInfoDataOrBuilder {
   // Use RoleInfoData.newBuilder() to construct.
   private RoleInfoData(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
     super(builder);
@@ -60,9 +59,8 @@ public final class RoleInfoData extends
             break;
           }
           case 10: {
-            com.google.protobuf.ByteString bs = input.readBytes();
             bitField0_ |= 0x00000001;
-            name_ = bs;
+            name_ = input.readBytes();
             break;
           }
           case 16: {
@@ -80,6 +78,22 @@ public final class RoleInfoData extends
             point_ = input.readInt32();
             break;
           }
+          case 42: {
+            if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+              card_ = new java.util.ArrayList<com.owl.card.common.protobuf.struct.CardInfo>();
+              mutable_bitField0_ |= 0x00000010;
+            }
+            card_.add(input.readMessage(com.owl.card.common.protobuf.struct.CardInfo.PARSER, extensionRegistry));
+            break;
+          }
+          case 50: {
+            if (!((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
+              group_ = new java.util.ArrayList<com.owl.card.common.protobuf.struct.CardGroupInfo>();
+              mutable_bitField0_ |= 0x00000020;
+            }
+            group_.add(input.readMessage(com.owl.card.common.protobuf.struct.CardGroupInfo.PARSER, extensionRegistry));
+            break;
+          }
         }
       }
     } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -88,6 +102,12 @@ public final class RoleInfoData extends
       throw new com.google.protobuf.InvalidProtocolBufferException(
           e.getMessage()).setUnfinishedMessage(this);
     } finally {
+      if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+        card_ = java.util.Collections.unmodifiableList(card_);
+      }
+      if (((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
+        group_ = java.util.Collections.unmodifiableList(group_);
+      }
       this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
     }
@@ -120,6 +140,7 @@ public final class RoleInfoData extends
   }
 
   private int bitField0_;
+  // optional string name = 1;
   public static final int NAME_FIELD_NUMBER = 1;
   private java.lang.Object name_;
   /**
@@ -174,6 +195,7 @@ public final class RoleInfoData extends
     }
   }
 
+  // required int32 gold = 2;
   public static final int GOLD_FIELD_NUMBER = 2;
   private int gold_;
   /**
@@ -197,6 +219,7 @@ public final class RoleInfoData extends
     return gold_;
   }
 
+  // required int32 diamond = 3;
   public static final int DIAMOND_FIELD_NUMBER = 3;
   private int diamond_;
   /**
@@ -220,6 +243,7 @@ public final class RoleInfoData extends
     return diamond_;
   }
 
+  // required int32 point = 4;
   public static final int POINT_FIELD_NUMBER = 4;
   private int point_;
   /**
@@ -243,17 +267,130 @@ public final class RoleInfoData extends
     return point_;
   }
 
+  // repeated .CardInfo card = 5;
+  public static final int CARD_FIELD_NUMBER = 5;
+  private java.util.List<com.owl.card.common.protobuf.struct.CardInfo> card_;
+  /**
+   * <code>repeated .CardInfo card = 5;</code>
+   *
+   * <pre>
+   * 卡牌信息
+   * </pre>
+   */
+  public java.util.List<com.owl.card.common.protobuf.struct.CardInfo> getCardList() {
+    return card_;
+  }
+  /**
+   * <code>repeated .CardInfo card = 5;</code>
+   *
+   * <pre>
+   * 卡牌信息
+   * </pre>
+   */
+  public java.util.List<? extends com.owl.card.common.protobuf.struct.CardInfoOrBuilder> 
+      getCardOrBuilderList() {
+    return card_;
+  }
+  /**
+   * <code>repeated .CardInfo card = 5;</code>
+   *
+   * <pre>
+   * 卡牌信息
+   * </pre>
+   */
+  public int getCardCount() {
+    return card_.size();
+  }
+  /**
+   * <code>repeated .CardInfo card = 5;</code>
+   *
+   * <pre>
+   * 卡牌信息
+   * </pre>
+   */
+  public com.owl.card.common.protobuf.struct.CardInfo getCard(int index) {
+    return card_.get(index);
+  }
+  /**
+   * <code>repeated .CardInfo card = 5;</code>
+   *
+   * <pre>
+   * 卡牌信息
+   * </pre>
+   */
+  public com.owl.card.common.protobuf.struct.CardInfoOrBuilder getCardOrBuilder(
+      int index) {
+    return card_.get(index);
+  }
+
+  // repeated .CardGroupInfo group = 6;
+  public static final int GROUP_FIELD_NUMBER = 6;
+  private java.util.List<com.owl.card.common.protobuf.struct.CardGroupInfo> group_;
+  /**
+   * <code>repeated .CardGroupInfo group = 6;</code>
+   *
+   * <pre>
+   * 卡组信息
+   * </pre>
+   */
+  public java.util.List<com.owl.card.common.protobuf.struct.CardGroupInfo> getGroupList() {
+    return group_;
+  }
+  /**
+   * <code>repeated .CardGroupInfo group = 6;</code>
+   *
+   * <pre>
+   * 卡组信息
+   * </pre>
+   */
+  public java.util.List<? extends com.owl.card.common.protobuf.struct.CardGroupInfoOrBuilder> 
+      getGroupOrBuilderList() {
+    return group_;
+  }
+  /**
+   * <code>repeated .CardGroupInfo group = 6;</code>
+   *
+   * <pre>
+   * 卡组信息
+   * </pre>
+   */
+  public int getGroupCount() {
+    return group_.size();
+  }
+  /**
+   * <code>repeated .CardGroupInfo group = 6;</code>
+   *
+   * <pre>
+   * 卡组信息
+   * </pre>
+   */
+  public com.owl.card.common.protobuf.struct.CardGroupInfo getGroup(int index) {
+    return group_.get(index);
+  }
+  /**
+   * <code>repeated .CardGroupInfo group = 6;</code>
+   *
+   * <pre>
+   * 卡组信息
+   * </pre>
+   */
+  public com.owl.card.common.protobuf.struct.CardGroupInfoOrBuilder getGroupOrBuilder(
+      int index) {
+    return group_.get(index);
+  }
+
   private void initFields() {
     name_ = "";
     gold_ = 0;
     diamond_ = 0;
     point_ = 0;
+    card_ = java.util.Collections.emptyList();
+    group_ = java.util.Collections.emptyList();
   }
   private byte memoizedIsInitialized = -1;
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
-    if (isInitialized == 1) return true;
-    if (isInitialized == 0) return false;
+    if (isInitialized != -1) return isInitialized == 1;
 
     if (!hasGold()) {
       memoizedIsInitialized = 0;
@@ -266,6 +403,18 @@ public final class RoleInfoData extends
     if (!hasPoint()) {
       memoizedIsInitialized = 0;
       return false;
+    }
+    for (int i = 0; i < getCardCount(); i++) {
+      if (!getCard(i).isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+    }
+    for (int i = 0; i < getGroupCount(); i++) {
+      if (!getGroup(i).isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
     }
     memoizedIsInitialized = 1;
     return true;
@@ -285,6 +434,12 @@ public final class RoleInfoData extends
     }
     if (((bitField0_ & 0x00000008) == 0x00000008)) {
       output.writeInt32(4, point_);
+    }
+    for (int i = 0; i < card_.size(); i++) {
+      output.writeMessage(5, card_.get(i));
+    }
+    for (int i = 0; i < group_.size(); i++) {
+      output.writeMessage(6, group_.get(i));
     }
     getUnknownFields().writeTo(output);
   }
@@ -310,6 +465,14 @@ public final class RoleInfoData extends
     if (((bitField0_ & 0x00000008) == 0x00000008)) {
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(4, point_);
+    }
+    for (int i = 0; i < card_.size(); i++) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(5, card_.get(i));
+    }
+    for (int i = 0; i < group_.size(); i++) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(6, group_.get(i));
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSerializedSize = size;
@@ -397,9 +560,8 @@ public final class RoleInfoData extends
    * </pre>
    */
   public static final class Builder extends
-      com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:RoleInfoData)
-      com.owl.card.common.protobuf.struct.RoleInfoDataOrBuilder {
+      com.google.protobuf.GeneratedMessage.Builder<Builder>
+     implements com.owl.card.common.protobuf.struct.RoleInfoDataOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.owl.card.common.protobuf.struct.CardStructPkt.internal_static_RoleInfoData_descriptor;
@@ -424,6 +586,8 @@ public final class RoleInfoData extends
     }
     private void maybeForceBuilderInitialization() {
       if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        getCardFieldBuilder();
+        getGroupFieldBuilder();
       }
     }
     private static Builder create() {
@@ -440,6 +604,18 @@ public final class RoleInfoData extends
       bitField0_ = (bitField0_ & ~0x00000004);
       point_ = 0;
       bitField0_ = (bitField0_ & ~0x00000008);
+      if (cardBuilder_ == null) {
+        card_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000010);
+      } else {
+        cardBuilder_.clear();
+      }
+      if (groupBuilder_ == null) {
+        group_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000020);
+      } else {
+        groupBuilder_.clear();
+      }
       return this;
     }
 
@@ -484,6 +660,24 @@ public final class RoleInfoData extends
         to_bitField0_ |= 0x00000008;
       }
       result.point_ = point_;
+      if (cardBuilder_ == null) {
+        if (((bitField0_ & 0x00000010) == 0x00000010)) {
+          card_ = java.util.Collections.unmodifiableList(card_);
+          bitField0_ = (bitField0_ & ~0x00000010);
+        }
+        result.card_ = card_;
+      } else {
+        result.card_ = cardBuilder_.build();
+      }
+      if (groupBuilder_ == null) {
+        if (((bitField0_ & 0x00000020) == 0x00000020)) {
+          group_ = java.util.Collections.unmodifiableList(group_);
+          bitField0_ = (bitField0_ & ~0x00000020);
+        }
+        result.group_ = group_;
+      } else {
+        result.group_ = groupBuilder_.build();
+      }
       result.bitField0_ = to_bitField0_;
       onBuilt();
       return result;
@@ -514,6 +708,58 @@ public final class RoleInfoData extends
       if (other.hasPoint()) {
         setPoint(other.getPoint());
       }
+      if (cardBuilder_ == null) {
+        if (!other.card_.isEmpty()) {
+          if (card_.isEmpty()) {
+            card_ = other.card_;
+            bitField0_ = (bitField0_ & ~0x00000010);
+          } else {
+            ensureCardIsMutable();
+            card_.addAll(other.card_);
+          }
+          onChanged();
+        }
+      } else {
+        if (!other.card_.isEmpty()) {
+          if (cardBuilder_.isEmpty()) {
+            cardBuilder_.dispose();
+            cardBuilder_ = null;
+            card_ = other.card_;
+            bitField0_ = (bitField0_ & ~0x00000010);
+            cardBuilder_ = 
+              com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                 getCardFieldBuilder() : null;
+          } else {
+            cardBuilder_.addAllMessages(other.card_);
+          }
+        }
+      }
+      if (groupBuilder_ == null) {
+        if (!other.group_.isEmpty()) {
+          if (group_.isEmpty()) {
+            group_ = other.group_;
+            bitField0_ = (bitField0_ & ~0x00000020);
+          } else {
+            ensureGroupIsMutable();
+            group_.addAll(other.group_);
+          }
+          onChanged();
+        }
+      } else {
+        if (!other.group_.isEmpty()) {
+          if (groupBuilder_.isEmpty()) {
+            groupBuilder_.dispose();
+            groupBuilder_ = null;
+            group_ = other.group_;
+            bitField0_ = (bitField0_ & ~0x00000020);
+            groupBuilder_ = 
+              com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                 getGroupFieldBuilder() : null;
+          } else {
+            groupBuilder_.addAllMessages(other.group_);
+          }
+        }
+      }
       this.mergeUnknownFields(other.getUnknownFields());
       return this;
     }
@@ -530,6 +776,18 @@ public final class RoleInfoData extends
       if (!hasPoint()) {
         
         return false;
+      }
+      for (int i = 0; i < getCardCount(); i++) {
+        if (!getCard(i).isInitialized()) {
+          
+          return false;
+        }
+      }
+      for (int i = 0; i < getGroupCount(); i++) {
+        if (!getGroup(i).isInitialized()) {
+          
+          return false;
+        }
       }
       return true;
     }
@@ -553,6 +811,7 @@ public final class RoleInfoData extends
     }
     private int bitField0_;
 
+    // optional string name = 1;
     private java.lang.Object name_ = "";
     /**
      * <code>optional string name = 1;</code>
@@ -574,12 +833,9 @@ public final class RoleInfoData extends
     public java.lang.String getName() {
       java.lang.Object ref = name_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          name_ = s;
-        }
+        java.lang.String s = ((com.google.protobuf.ByteString) ref)
+            .toStringUtf8();
+        name_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
@@ -653,6 +909,7 @@ public final class RoleInfoData extends
       return this;
     }
 
+    // required int32 gold = 2;
     private int gold_ ;
     /**
      * <code>required int32 gold = 2;</code>
@@ -701,6 +958,7 @@ public final class RoleInfoData extends
       return this;
     }
 
+    // required int32 diamond = 3;
     private int diamond_ ;
     /**
      * <code>required int32 diamond = 3;</code>
@@ -749,6 +1007,7 @@ public final class RoleInfoData extends
       return this;
     }
 
+    // required int32 point = 4;
     private int point_ ;
     /**
      * <code>required int32 point = 4;</code>
@@ -795,6 +1054,630 @@ public final class RoleInfoData extends
       point_ = 0;
       onChanged();
       return this;
+    }
+
+    // repeated .CardInfo card = 5;
+    private java.util.List<com.owl.card.common.protobuf.struct.CardInfo> card_ =
+      java.util.Collections.emptyList();
+    private void ensureCardIsMutable() {
+      if (!((bitField0_ & 0x00000010) == 0x00000010)) {
+        card_ = new java.util.ArrayList<com.owl.card.common.protobuf.struct.CardInfo>(card_);
+        bitField0_ |= 0x00000010;
+       }
+    }
+
+    private com.google.protobuf.RepeatedFieldBuilder<
+        com.owl.card.common.protobuf.struct.CardInfo, com.owl.card.common.protobuf.struct.CardInfo.Builder, com.owl.card.common.protobuf.struct.CardInfoOrBuilder> cardBuilder_;
+
+    /**
+     * <code>repeated .CardInfo card = 5;</code>
+     *
+     * <pre>
+     * 卡牌信息
+     * </pre>
+     */
+    public java.util.List<com.owl.card.common.protobuf.struct.CardInfo> getCardList() {
+      if (cardBuilder_ == null) {
+        return java.util.Collections.unmodifiableList(card_);
+      } else {
+        return cardBuilder_.getMessageList();
+      }
+    }
+    /**
+     * <code>repeated .CardInfo card = 5;</code>
+     *
+     * <pre>
+     * 卡牌信息
+     * </pre>
+     */
+    public int getCardCount() {
+      if (cardBuilder_ == null) {
+        return card_.size();
+      } else {
+        return cardBuilder_.getCount();
+      }
+    }
+    /**
+     * <code>repeated .CardInfo card = 5;</code>
+     *
+     * <pre>
+     * 卡牌信息
+     * </pre>
+     */
+    public com.owl.card.common.protobuf.struct.CardInfo getCard(int index) {
+      if (cardBuilder_ == null) {
+        return card_.get(index);
+      } else {
+        return cardBuilder_.getMessage(index);
+      }
+    }
+    /**
+     * <code>repeated .CardInfo card = 5;</code>
+     *
+     * <pre>
+     * 卡牌信息
+     * </pre>
+     */
+    public Builder setCard(
+        int index, com.owl.card.common.protobuf.struct.CardInfo value) {
+      if (cardBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureCardIsMutable();
+        card_.set(index, value);
+        onChanged();
+      } else {
+        cardBuilder_.setMessage(index, value);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .CardInfo card = 5;</code>
+     *
+     * <pre>
+     * 卡牌信息
+     * </pre>
+     */
+    public Builder setCard(
+        int index, com.owl.card.common.protobuf.struct.CardInfo.Builder builderForValue) {
+      if (cardBuilder_ == null) {
+        ensureCardIsMutable();
+        card_.set(index, builderForValue.build());
+        onChanged();
+      } else {
+        cardBuilder_.setMessage(index, builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .CardInfo card = 5;</code>
+     *
+     * <pre>
+     * 卡牌信息
+     * </pre>
+     */
+    public Builder addCard(com.owl.card.common.protobuf.struct.CardInfo value) {
+      if (cardBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureCardIsMutable();
+        card_.add(value);
+        onChanged();
+      } else {
+        cardBuilder_.addMessage(value);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .CardInfo card = 5;</code>
+     *
+     * <pre>
+     * 卡牌信息
+     * </pre>
+     */
+    public Builder addCard(
+        int index, com.owl.card.common.protobuf.struct.CardInfo value) {
+      if (cardBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureCardIsMutable();
+        card_.add(index, value);
+        onChanged();
+      } else {
+        cardBuilder_.addMessage(index, value);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .CardInfo card = 5;</code>
+     *
+     * <pre>
+     * 卡牌信息
+     * </pre>
+     */
+    public Builder addCard(
+        com.owl.card.common.protobuf.struct.CardInfo.Builder builderForValue) {
+      if (cardBuilder_ == null) {
+        ensureCardIsMutable();
+        card_.add(builderForValue.build());
+        onChanged();
+      } else {
+        cardBuilder_.addMessage(builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .CardInfo card = 5;</code>
+     *
+     * <pre>
+     * 卡牌信息
+     * </pre>
+     */
+    public Builder addCard(
+        int index, com.owl.card.common.protobuf.struct.CardInfo.Builder builderForValue) {
+      if (cardBuilder_ == null) {
+        ensureCardIsMutable();
+        card_.add(index, builderForValue.build());
+        onChanged();
+      } else {
+        cardBuilder_.addMessage(index, builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .CardInfo card = 5;</code>
+     *
+     * <pre>
+     * 卡牌信息
+     * </pre>
+     */
+    public Builder addAllCard(
+        java.lang.Iterable<? extends com.owl.card.common.protobuf.struct.CardInfo> values) {
+      if (cardBuilder_ == null) {
+        ensureCardIsMutable();
+        super.addAll(values, card_);
+        onChanged();
+      } else {
+        cardBuilder_.addAllMessages(values);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .CardInfo card = 5;</code>
+     *
+     * <pre>
+     * 卡牌信息
+     * </pre>
+     */
+    public Builder clearCard() {
+      if (cardBuilder_ == null) {
+        card_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000010);
+        onChanged();
+      } else {
+        cardBuilder_.clear();
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .CardInfo card = 5;</code>
+     *
+     * <pre>
+     * 卡牌信息
+     * </pre>
+     */
+    public Builder removeCard(int index) {
+      if (cardBuilder_ == null) {
+        ensureCardIsMutable();
+        card_.remove(index);
+        onChanged();
+      } else {
+        cardBuilder_.remove(index);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .CardInfo card = 5;</code>
+     *
+     * <pre>
+     * 卡牌信息
+     * </pre>
+     */
+    public com.owl.card.common.protobuf.struct.CardInfo.Builder getCardBuilder(
+        int index) {
+      return getCardFieldBuilder().getBuilder(index);
+    }
+    /**
+     * <code>repeated .CardInfo card = 5;</code>
+     *
+     * <pre>
+     * 卡牌信息
+     * </pre>
+     */
+    public com.owl.card.common.protobuf.struct.CardInfoOrBuilder getCardOrBuilder(
+        int index) {
+      if (cardBuilder_ == null) {
+        return card_.get(index);  } else {
+        return cardBuilder_.getMessageOrBuilder(index);
+      }
+    }
+    /**
+     * <code>repeated .CardInfo card = 5;</code>
+     *
+     * <pre>
+     * 卡牌信息
+     * </pre>
+     */
+    public java.util.List<? extends com.owl.card.common.protobuf.struct.CardInfoOrBuilder> 
+         getCardOrBuilderList() {
+      if (cardBuilder_ != null) {
+        return cardBuilder_.getMessageOrBuilderList();
+      } else {
+        return java.util.Collections.unmodifiableList(card_);
+      }
+    }
+    /**
+     * <code>repeated .CardInfo card = 5;</code>
+     *
+     * <pre>
+     * 卡牌信息
+     * </pre>
+     */
+    public com.owl.card.common.protobuf.struct.CardInfo.Builder addCardBuilder() {
+      return getCardFieldBuilder().addBuilder(
+          com.owl.card.common.protobuf.struct.CardInfo.getDefaultInstance());
+    }
+    /**
+     * <code>repeated .CardInfo card = 5;</code>
+     *
+     * <pre>
+     * 卡牌信息
+     * </pre>
+     */
+    public com.owl.card.common.protobuf.struct.CardInfo.Builder addCardBuilder(
+        int index) {
+      return getCardFieldBuilder().addBuilder(
+          index, com.owl.card.common.protobuf.struct.CardInfo.getDefaultInstance());
+    }
+    /**
+     * <code>repeated .CardInfo card = 5;</code>
+     *
+     * <pre>
+     * 卡牌信息
+     * </pre>
+     */
+    public java.util.List<com.owl.card.common.protobuf.struct.CardInfo.Builder> 
+         getCardBuilderList() {
+      return getCardFieldBuilder().getBuilderList();
+    }
+    private com.google.protobuf.RepeatedFieldBuilder<
+        com.owl.card.common.protobuf.struct.CardInfo, com.owl.card.common.protobuf.struct.CardInfo.Builder, com.owl.card.common.protobuf.struct.CardInfoOrBuilder> 
+        getCardFieldBuilder() {
+      if (cardBuilder_ == null) {
+        cardBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+            com.owl.card.common.protobuf.struct.CardInfo, com.owl.card.common.protobuf.struct.CardInfo.Builder, com.owl.card.common.protobuf.struct.CardInfoOrBuilder>(
+                card_,
+                ((bitField0_ & 0x00000010) == 0x00000010),
+                getParentForChildren(),
+                isClean());
+        card_ = null;
+      }
+      return cardBuilder_;
+    }
+
+    // repeated .CardGroupInfo group = 6;
+    private java.util.List<com.owl.card.common.protobuf.struct.CardGroupInfo> group_ =
+      java.util.Collections.emptyList();
+    private void ensureGroupIsMutable() {
+      if (!((bitField0_ & 0x00000020) == 0x00000020)) {
+        group_ = new java.util.ArrayList<com.owl.card.common.protobuf.struct.CardGroupInfo>(group_);
+        bitField0_ |= 0x00000020;
+       }
+    }
+
+    private com.google.protobuf.RepeatedFieldBuilder<
+        com.owl.card.common.protobuf.struct.CardGroupInfo, com.owl.card.common.protobuf.struct.CardGroupInfo.Builder, com.owl.card.common.protobuf.struct.CardGroupInfoOrBuilder> groupBuilder_;
+
+    /**
+     * <code>repeated .CardGroupInfo group = 6;</code>
+     *
+     * <pre>
+     * 卡组信息
+     * </pre>
+     */
+    public java.util.List<com.owl.card.common.protobuf.struct.CardGroupInfo> getGroupList() {
+      if (groupBuilder_ == null) {
+        return java.util.Collections.unmodifiableList(group_);
+      } else {
+        return groupBuilder_.getMessageList();
+      }
+    }
+    /**
+     * <code>repeated .CardGroupInfo group = 6;</code>
+     *
+     * <pre>
+     * 卡组信息
+     * </pre>
+     */
+    public int getGroupCount() {
+      if (groupBuilder_ == null) {
+        return group_.size();
+      } else {
+        return groupBuilder_.getCount();
+      }
+    }
+    /**
+     * <code>repeated .CardGroupInfo group = 6;</code>
+     *
+     * <pre>
+     * 卡组信息
+     * </pre>
+     */
+    public com.owl.card.common.protobuf.struct.CardGroupInfo getGroup(int index) {
+      if (groupBuilder_ == null) {
+        return group_.get(index);
+      } else {
+        return groupBuilder_.getMessage(index);
+      }
+    }
+    /**
+     * <code>repeated .CardGroupInfo group = 6;</code>
+     *
+     * <pre>
+     * 卡组信息
+     * </pre>
+     */
+    public Builder setGroup(
+        int index, com.owl.card.common.protobuf.struct.CardGroupInfo value) {
+      if (groupBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureGroupIsMutable();
+        group_.set(index, value);
+        onChanged();
+      } else {
+        groupBuilder_.setMessage(index, value);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .CardGroupInfo group = 6;</code>
+     *
+     * <pre>
+     * 卡组信息
+     * </pre>
+     */
+    public Builder setGroup(
+        int index, com.owl.card.common.protobuf.struct.CardGroupInfo.Builder builderForValue) {
+      if (groupBuilder_ == null) {
+        ensureGroupIsMutable();
+        group_.set(index, builderForValue.build());
+        onChanged();
+      } else {
+        groupBuilder_.setMessage(index, builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .CardGroupInfo group = 6;</code>
+     *
+     * <pre>
+     * 卡组信息
+     * </pre>
+     */
+    public Builder addGroup(com.owl.card.common.protobuf.struct.CardGroupInfo value) {
+      if (groupBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureGroupIsMutable();
+        group_.add(value);
+        onChanged();
+      } else {
+        groupBuilder_.addMessage(value);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .CardGroupInfo group = 6;</code>
+     *
+     * <pre>
+     * 卡组信息
+     * </pre>
+     */
+    public Builder addGroup(
+        int index, com.owl.card.common.protobuf.struct.CardGroupInfo value) {
+      if (groupBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureGroupIsMutable();
+        group_.add(index, value);
+        onChanged();
+      } else {
+        groupBuilder_.addMessage(index, value);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .CardGroupInfo group = 6;</code>
+     *
+     * <pre>
+     * 卡组信息
+     * </pre>
+     */
+    public Builder addGroup(
+        com.owl.card.common.protobuf.struct.CardGroupInfo.Builder builderForValue) {
+      if (groupBuilder_ == null) {
+        ensureGroupIsMutable();
+        group_.add(builderForValue.build());
+        onChanged();
+      } else {
+        groupBuilder_.addMessage(builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .CardGroupInfo group = 6;</code>
+     *
+     * <pre>
+     * 卡组信息
+     * </pre>
+     */
+    public Builder addGroup(
+        int index, com.owl.card.common.protobuf.struct.CardGroupInfo.Builder builderForValue) {
+      if (groupBuilder_ == null) {
+        ensureGroupIsMutable();
+        group_.add(index, builderForValue.build());
+        onChanged();
+      } else {
+        groupBuilder_.addMessage(index, builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .CardGroupInfo group = 6;</code>
+     *
+     * <pre>
+     * 卡组信息
+     * </pre>
+     */
+    public Builder addAllGroup(
+        java.lang.Iterable<? extends com.owl.card.common.protobuf.struct.CardGroupInfo> values) {
+      if (groupBuilder_ == null) {
+        ensureGroupIsMutable();
+        super.addAll(values, group_);
+        onChanged();
+      } else {
+        groupBuilder_.addAllMessages(values);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .CardGroupInfo group = 6;</code>
+     *
+     * <pre>
+     * 卡组信息
+     * </pre>
+     */
+    public Builder clearGroup() {
+      if (groupBuilder_ == null) {
+        group_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000020);
+        onChanged();
+      } else {
+        groupBuilder_.clear();
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .CardGroupInfo group = 6;</code>
+     *
+     * <pre>
+     * 卡组信息
+     * </pre>
+     */
+    public Builder removeGroup(int index) {
+      if (groupBuilder_ == null) {
+        ensureGroupIsMutable();
+        group_.remove(index);
+        onChanged();
+      } else {
+        groupBuilder_.remove(index);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .CardGroupInfo group = 6;</code>
+     *
+     * <pre>
+     * 卡组信息
+     * </pre>
+     */
+    public com.owl.card.common.protobuf.struct.CardGroupInfo.Builder getGroupBuilder(
+        int index) {
+      return getGroupFieldBuilder().getBuilder(index);
+    }
+    /**
+     * <code>repeated .CardGroupInfo group = 6;</code>
+     *
+     * <pre>
+     * 卡组信息
+     * </pre>
+     */
+    public com.owl.card.common.protobuf.struct.CardGroupInfoOrBuilder getGroupOrBuilder(
+        int index) {
+      if (groupBuilder_ == null) {
+        return group_.get(index);  } else {
+        return groupBuilder_.getMessageOrBuilder(index);
+      }
+    }
+    /**
+     * <code>repeated .CardGroupInfo group = 6;</code>
+     *
+     * <pre>
+     * 卡组信息
+     * </pre>
+     */
+    public java.util.List<? extends com.owl.card.common.protobuf.struct.CardGroupInfoOrBuilder> 
+         getGroupOrBuilderList() {
+      if (groupBuilder_ != null) {
+        return groupBuilder_.getMessageOrBuilderList();
+      } else {
+        return java.util.Collections.unmodifiableList(group_);
+      }
+    }
+    /**
+     * <code>repeated .CardGroupInfo group = 6;</code>
+     *
+     * <pre>
+     * 卡组信息
+     * </pre>
+     */
+    public com.owl.card.common.protobuf.struct.CardGroupInfo.Builder addGroupBuilder() {
+      return getGroupFieldBuilder().addBuilder(
+          com.owl.card.common.protobuf.struct.CardGroupInfo.getDefaultInstance());
+    }
+    /**
+     * <code>repeated .CardGroupInfo group = 6;</code>
+     *
+     * <pre>
+     * 卡组信息
+     * </pre>
+     */
+    public com.owl.card.common.protobuf.struct.CardGroupInfo.Builder addGroupBuilder(
+        int index) {
+      return getGroupFieldBuilder().addBuilder(
+          index, com.owl.card.common.protobuf.struct.CardGroupInfo.getDefaultInstance());
+    }
+    /**
+     * <code>repeated .CardGroupInfo group = 6;</code>
+     *
+     * <pre>
+     * 卡组信息
+     * </pre>
+     */
+    public java.util.List<com.owl.card.common.protobuf.struct.CardGroupInfo.Builder> 
+         getGroupBuilderList() {
+      return getGroupFieldBuilder().getBuilderList();
+    }
+    private com.google.protobuf.RepeatedFieldBuilder<
+        com.owl.card.common.protobuf.struct.CardGroupInfo, com.owl.card.common.protobuf.struct.CardGroupInfo.Builder, com.owl.card.common.protobuf.struct.CardGroupInfoOrBuilder> 
+        getGroupFieldBuilder() {
+      if (groupBuilder_ == null) {
+        groupBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+            com.owl.card.common.protobuf.struct.CardGroupInfo, com.owl.card.common.protobuf.struct.CardGroupInfo.Builder, com.owl.card.common.protobuf.struct.CardGroupInfoOrBuilder>(
+                group_,
+                ((bitField0_ & 0x00000020) == 0x00000020),
+                getParentForChildren(),
+                isClean());
+        group_ = null;
+      }
+      return groupBuilder_;
     }
 
     // @@protoc_insertion_point(builder_scope:RoleInfoData)

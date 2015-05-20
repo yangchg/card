@@ -7,6 +7,8 @@ import java.util.Map;
 
 import com.owl.card.common.base.BaseModule;
 import com.owl.card.game.app.GameServerInit;
+import com.owl.card.game.module.card.CardGroupModule;
+import com.owl.card.game.module.card.interfaces.CardGroupModuleInterface;
 import com.owl.card.game.module.login.LoginModule;
 import com.owl.card.game.module.login.interfaces.LoginModuleInterface;
 
@@ -32,6 +34,7 @@ public class GameModuleManager {
 	}
 
 	public static LoginModuleInterface loginModule;
+	public static CardGroupModuleInterface cardGroupModule;
 
 	protected <T extends BaseModule> T registerModule(T module) {
 		this.modules.add(module);
@@ -46,6 +49,7 @@ public class GameModuleManager {
 
 		loginModule = registerModule(new LoginModule(serverInit.getAccountService(), serverInit.getRoleService(),
 				serverInit.getCardService()));
+		cardGroupModule = registerModule(new CardGroupModule());
 	}
 
 }

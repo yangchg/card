@@ -8,11 +8,21 @@ public final class CardStructPkt {
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
   }
-  static final com.google.protobuf.Descriptors.Descriptor
+  static com.google.protobuf.Descriptors.Descriptor
     internal_static_RoleInfoData_descriptor;
   static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_RoleInfoData_fieldAccessorTable;
+  static com.google.protobuf.Descriptors.Descriptor
+    internal_static_CardInfo_descriptor;
+  static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_CardInfo_fieldAccessorTable;
+  static com.google.protobuf.Descriptors.Descriptor
+    internal_static_CardGroupInfo_descriptor;
+  static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_CardGroupInfo_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -22,29 +32,46 @@ public final class CardStructPkt {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\020msg_struct.proto\"J\n\014RoleInfoData\022\014\n\004na" +
-      "me\030\001 \001(\t\022\014\n\004gold\030\002 \002(\005\022\017\n\007diamond\030\003 \002(\005\022" +
-      "\r\n\005point\030\004 \002(\005B6\n#com.owl.card.common.pr" +
-      "otobuf.structB\rCardStructPktP\001"
+      "\n\020msg_struct.proto\"\202\001\n\014RoleInfoData\022\014\n\004n" +
+      "ame\030\001 \001(\t\022\014\n\004gold\030\002 \002(\005\022\017\n\007diamond\030\003 \002(\005" +
+      "\022\r\n\005point\030\004 \002(\005\022\027\n\004card\030\005 \003(\0132\t.CardInfo" +
+      "\022\035\n\005group\030\006 \003(\0132\016.CardGroupInfo\"(\n\010CardI" +
+      "nfo\022\017\n\007protoId\030\001 \002(\005\022\013\n\003num\030\002 \002(\005\"\\\n\rCar" +
+      "dGroupInfo\022\017\n\007groupId\030\001 \002(\003\022\021\n\tgroupName" +
+      "\030\002 \002(\t\022\022\n\nheroCareer\030\003 \002(\005\022\023\n\013cardProtoI" +
+      "d\030\004 \003(\005B6\n#com.owl.card.common.protobuf." +
+      "structB\rCardStructPktP\001"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
-        new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
-          public com.google.protobuf.ExtensionRegistry assignDescriptors(
-              com.google.protobuf.Descriptors.FileDescriptor root) {
-            descriptor = root;
-            return null;
-          }
-        };
+      new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
+        public com.google.protobuf.ExtensionRegistry assignDescriptors(
+            com.google.protobuf.Descriptors.FileDescriptor root) {
+          descriptor = root;
+          internal_static_RoleInfoData_descriptor =
+            getDescriptor().getMessageTypes().get(0);
+          internal_static_RoleInfoData_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_RoleInfoData_descriptor,
+              new java.lang.String[] { "Name", "Gold", "Diamond", "Point", "Card", "Group", });
+          internal_static_CardInfo_descriptor =
+            getDescriptor().getMessageTypes().get(1);
+          internal_static_CardInfo_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_CardInfo_descriptor,
+              new java.lang.String[] { "ProtoId", "Num", });
+          internal_static_CardGroupInfo_descriptor =
+            getDescriptor().getMessageTypes().get(2);
+          internal_static_CardGroupInfo_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_CardGroupInfo_descriptor,
+              new java.lang.String[] { "GroupId", "GroupName", "HeroCareer", "CardProtoId", });
+          return null;
+        }
+      };
     com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         }, assigner);
-    internal_static_RoleInfoData_descriptor =
-      getDescriptor().getMessageTypes().get(0);
-    internal_static_RoleInfoData_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_RoleInfoData_descriptor,
-        new java.lang.String[] { "Name", "Gold", "Diamond", "Point", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

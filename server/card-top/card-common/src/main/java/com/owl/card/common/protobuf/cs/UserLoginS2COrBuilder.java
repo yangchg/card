@@ -3,10 +3,10 @@
 
 package com.owl.card.common.protobuf.cs;
 
-public interface UserLoginS2COrBuilder extends
-    // @@protoc_insertion_point(interface_extends:UserLoginS2C)
-    com.google.protobuf.MessageOrBuilder {
+public interface UserLoginS2COrBuilder
+    extends com.google.protobuf.MessageOrBuilder {
 
+  // required int32 rt = 1;
   /**
    * <code>required int32 rt = 1;</code>
    *
@@ -24,6 +24,7 @@ public interface UserLoginS2COrBuilder extends
    */
   int getRt();
 
+  // optional .RoleInfoData roleInfo = 2;
   /**
    * <code>optional .RoleInfoData roleInfo = 2;</code>
    *

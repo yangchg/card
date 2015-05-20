@@ -3,10 +3,10 @@
 
 package com.owl.card.common.protobuf.cs;
 
-public interface UserLoginC2SOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:UserLoginC2S)
-    com.google.protobuf.MessageOrBuilder {
+public interface UserLoginC2SOrBuilder
+    extends com.google.protobuf.MessageOrBuilder {
 
+  // required int32 accid = 1;
   /**
    * <code>required int32 accid = 1;</code>
    *
@@ -24,6 +24,7 @@ public interface UserLoginC2SOrBuilder extends
    */
   int getAccid();
 
+  // required int32 tstamp = 2;
   /**
    * <code>required int32 tstamp = 2;</code>
    *
@@ -41,6 +42,7 @@ public interface UserLoginC2SOrBuilder extends
    */
   int getTstamp();
 
+  // required string ticket = 3;
   /**
    * <code>required string ticket = 3;</code>
    *
