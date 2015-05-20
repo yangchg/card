@@ -62,13 +62,16 @@ public final class CardGamePkt {
       "\005\022\016\n\006ticket\030\003 \002(\t\";\n\014UserLoginS2C\022\n\n\002rt\030" +
       "\001 \002(\005\022\037\n\010roleInfo\030\002 \001(\0132\r.RoleInfoData\"D" +
       "\n\014CardGroupAdd\022\014\n\004hero\030\001 \002(\005\022\021\n\tgroupNam" +
-      "e\030\002 \002(\t\022\023\n\013cardProtoId\030\003 \003(\005\"\034\n\016CardGrou" +
-      "pAddRt\022\n\n\002rt\030\001 \002(\005\"H\n\rCardGroupEdit\022\017\n\007g" +
-      "roupId\030\001 \002(\003\022\021\n\tgroupName\030\002 \002(\t\022\023\n\013cardP" +
-      "rotoId\030\003 \003(\005\"\035\n\017CardGroupEditRt\022\n\n\002rt\030\001 " +
-      "\002(\005\"\037\n\014CardGroupDel\022\017\n\007groupId\030\001 \002(\003\"\034\n\016",
-      "CardGroupDelRt\022\n\n\002rt\030\001 \002(\005B0\n\037com.owl.ca" +
-      "rd.common.protobuf.csB\013CardGamePktP\001"
+      "e\030\002 \002(\t\022\023\n\013cardProtoId\030\003 \003(\005\"R\n\016CardGrou" +
+      "pAddRt\022\n\n\002rt\030\001 \002(\005\022\014\n\004hero\030\002 \001(\005\022\021\n\tgrou" +
+      "pName\030\003 \001(\t\022\023\n\013cardProtoId\030\004 \003(\005\"H\n\rCard" +
+      "GroupEdit\022\017\n\007groupId\030\001 \002(\003\022\021\n\tgroupName\030" +
+      "\002 \002(\t\022\023\n\013cardProtoId\030\003 \003(\005\"V\n\017CardGroupE",
+      "ditRt\022\n\n\002rt\030\001 \002(\005\022\017\n\007groupId\030\002 \001(\003\022\021\n\tgr" +
+      "oupName\030\003 \001(\t\022\023\n\013cardProtoId\030\004 \003(\005\"\037\n\014Ca" +
+      "rdGroupDel\022\017\n\007groupId\030\001 \002(\003\"\034\n\016CardGroup" +
+      "DelRt\022\n\n\002rt\030\001 \002(\005B0\n\037com.owl.card.common" +
+      ".protobuf.csB\013CardGamePktP\001"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -98,7 +101,7 @@ public final class CardGamePkt {
           internal_static_CardGroupAddRt_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_CardGroupAddRt_descriptor,
-              new java.lang.String[] { "Rt", });
+              new java.lang.String[] { "Rt", "Hero", "GroupName", "CardProtoId", });
           internal_static_CardGroupEdit_descriptor =
             getDescriptor().getMessageTypes().get(4);
           internal_static_CardGroupEdit_fieldAccessorTable = new
@@ -110,7 +113,7 @@ public final class CardGamePkt {
           internal_static_CardGroupEditRt_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_CardGroupEditRt_descriptor,
-              new java.lang.String[] { "Rt", });
+              new java.lang.String[] { "Rt", "GroupId", "GroupName", "CardProtoId", });
           internal_static_CardGroupDel_descriptor =
             getDescriptor().getMessageTypes().get(6);
           internal_static_CardGroupDel_fieldAccessorTable = new

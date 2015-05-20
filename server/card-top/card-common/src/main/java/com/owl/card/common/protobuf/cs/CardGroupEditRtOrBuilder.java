@@ -15,4 +15,75 @@ public interface CardGroupEditRtOrBuilder
    * <code>required int32 rt = 1;</code>
    */
   int getRt();
+
+  // optional int64 groupId = 2;
+  /**
+   * <code>optional int64 groupId = 2;</code>
+   *
+   * <pre>
+   * 卡组编号
+   * </pre>
+   */
+  boolean hasGroupId();
+  /**
+   * <code>optional int64 groupId = 2;</code>
+   *
+   * <pre>
+   * 卡组编号
+   * </pre>
+   */
+  long getGroupId();
+
+  // optional string groupName = 3;
+  /**
+   * <code>optional string groupName = 3;</code>
+   *
+   * <pre>
+   * 卡组名称
+   * </pre>
+   */
+  boolean hasGroupName();
+  /**
+   * <code>optional string groupName = 3;</code>
+   *
+   * <pre>
+   * 卡组名称
+   * </pre>
+   */
+  java.lang.String getGroupName();
+  /**
+   * <code>optional string groupName = 3;</code>
+   *
+   * <pre>
+   * 卡组名称
+   * </pre>
+   */
+  com.google.protobuf.ByteString
+      getGroupNameBytes();
+
+  // repeated int32 cardProtoId = 4;
+  /**
+   * <code>repeated int32 cardProtoId = 4;</code>
+   *
+   * <pre>
+   * 卡牌编号
+   * </pre>
+   */
+  java.util.List<java.lang.Integer> getCardProtoIdList();
+  /**
+   * <code>repeated int32 cardProtoId = 4;</code>
+   *
+   * <pre>
+   * 卡牌编号
+   * </pre>
+   */
+  int getCardProtoIdCount();
+  /**
+   * <code>repeated int32 cardProtoId = 4;</code>
+   *
+   * <pre>
+   * 卡牌编号
+   * </pre>
+   */
+  int getCardProtoId(int index);
 }

@@ -1,7 +1,9 @@
 package com.owl.card.game.obj;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.owl.card.common.domain.Card;
 import com.owl.card.common.domain.CardGroup;
@@ -18,8 +20,11 @@ public class GameSession {
 	// 卡牌信息
 	private List<Card> cards = new ArrayList<Card>();
 
+	private Map<Integer, Card> cardMap = new HashMap<>();
+
 	// 卡组信息
-	private List<CardGroup> cardGroups = new ArrayList<CardGroup>();
+	private List<CardGroup> groups = new ArrayList<CardGroup>();
+	private Map<Long, CardGroup> groupMap = new HashMap<>();
 
 	public int getChannelId() {
 		return channelId;
@@ -45,12 +50,28 @@ public class GameSession {
 		this.cards = cards;
 	}
 
-	public List<CardGroup> getCardGroups() {
-		return cardGroups;
+	public Map<Integer, Card> getCardMap() {
+		return cardMap;
 	}
 
-	public void setCardGroups(List<CardGroup> cardGroups) {
-		this.cardGroups = cardGroups;
+	public void setCardMap(Map<Integer, Card> cardMap) {
+		this.cardMap = cardMap;
+	}
+
+	public List<CardGroup> getGroups() {
+		return groups;
+	}
+
+	public void setGroups(List<CardGroup> groups) {
+		this.groups = groups;
+	}
+
+	public Map<Long, CardGroup> getGroupMap() {
+		return groupMap;
+	}
+
+	public void setGroupMap(Map<Long, CardGroup> groupMap) {
+		this.groupMap = groupMap;
 	}
 
 	public GameSession(int channelId) {

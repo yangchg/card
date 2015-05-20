@@ -65,6 +65,37 @@ public  final class CardGroupAddRt extends
             rt_ = input.readInt32();
             break;
           }
+          case 16: {
+            bitField0_ |= 0x00000002;
+            hero_ = input.readInt32();
+            break;
+          }
+          case 26: {
+            bitField0_ |= 0x00000004;
+            groupName_ = input.readBytes();
+            break;
+          }
+          case 32: {
+            if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+              cardProtoId_ = new java.util.ArrayList<java.lang.Integer>();
+              mutable_bitField0_ |= 0x00000008;
+            }
+            cardProtoId_.add(input.readInt32());
+            break;
+          }
+          case 34: {
+            int length = input.readRawVarint32();
+            int limit = input.pushLimit(length);
+            if (!((mutable_bitField0_ & 0x00000008) == 0x00000008) && input.getBytesUntilLimit() > 0) {
+              cardProtoId_ = new java.util.ArrayList<java.lang.Integer>();
+              mutable_bitField0_ |= 0x00000008;
+            }
+            while (input.getBytesUntilLimit() > 0) {
+              cardProtoId_.add(input.readInt32());
+            }
+            input.popLimit(limit);
+            break;
+          }
         }
       }
     } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -73,6 +104,9 @@ public  final class CardGroupAddRt extends
       throw new com.google.protobuf.InvalidProtocolBufferException(
           e.getMessage()).setUnfinishedMessage(this);
     } finally {
+      if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+        cardProtoId_ = java.util.Collections.unmodifiableList(cardProtoId_);
+      }
       this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
     }
@@ -121,8 +155,125 @@ public  final class CardGroupAddRt extends
     return rt_;
   }
 
+  // optional int32 hero = 2;
+  public static final int HERO_FIELD_NUMBER = 2;
+  private int hero_;
+  /**
+   * <code>optional int32 hero = 2;</code>
+   *
+   * <pre>
+   * 英雄
+   * </pre>
+   */
+  public boolean hasHero() {
+    return ((bitField0_ & 0x00000002) == 0x00000002);
+  }
+  /**
+   * <code>optional int32 hero = 2;</code>
+   *
+   * <pre>
+   * 英雄
+   * </pre>
+   */
+  public int getHero() {
+    return hero_;
+  }
+
+  // optional string groupName = 3;
+  public static final int GROUPNAME_FIELD_NUMBER = 3;
+  private java.lang.Object groupName_;
+  /**
+   * <code>optional string groupName = 3;</code>
+   *
+   * <pre>
+   * 卡组名称
+   * </pre>
+   */
+  public boolean hasGroupName() {
+    return ((bitField0_ & 0x00000004) == 0x00000004);
+  }
+  /**
+   * <code>optional string groupName = 3;</code>
+   *
+   * <pre>
+   * 卡组名称
+   * </pre>
+   */
+  public java.lang.String getGroupName() {
+    java.lang.Object ref = groupName_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      if (bs.isValidUtf8()) {
+        groupName_ = s;
+      }
+      return s;
+    }
+  }
+  /**
+   * <code>optional string groupName = 3;</code>
+   *
+   * <pre>
+   * 卡组名称
+   * </pre>
+   */
+  public com.google.protobuf.ByteString
+      getGroupNameBytes() {
+    java.lang.Object ref = groupName_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      groupName_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  // repeated int32 cardProtoId = 4;
+  public static final int CARDPROTOID_FIELD_NUMBER = 4;
+  private java.util.List<java.lang.Integer> cardProtoId_;
+  /**
+   * <code>repeated int32 cardProtoId = 4;</code>
+   *
+   * <pre>
+   * 卡牌编号
+   * </pre>
+   */
+  public java.util.List<java.lang.Integer>
+      getCardProtoIdList() {
+    return cardProtoId_;
+  }
+  /**
+   * <code>repeated int32 cardProtoId = 4;</code>
+   *
+   * <pre>
+   * 卡牌编号
+   * </pre>
+   */
+  public int getCardProtoIdCount() {
+    return cardProtoId_.size();
+  }
+  /**
+   * <code>repeated int32 cardProtoId = 4;</code>
+   *
+   * <pre>
+   * 卡牌编号
+   * </pre>
+   */
+  public int getCardProtoId(int index) {
+    return cardProtoId_.get(index);
+  }
+
   private void initFields() {
     rt_ = 0;
+    hero_ = 0;
+    groupName_ = "";
+    cardProtoId_ = java.util.Collections.emptyList();
   }
   private byte memoizedIsInitialized = -1;
   public final boolean isInitialized() {
@@ -143,6 +294,15 @@ public  final class CardGroupAddRt extends
     if (((bitField0_ & 0x00000001) == 0x00000001)) {
       output.writeInt32(1, rt_);
     }
+    if (((bitField0_ & 0x00000002) == 0x00000002)) {
+      output.writeInt32(2, hero_);
+    }
+    if (((bitField0_ & 0x00000004) == 0x00000004)) {
+      output.writeBytes(3, getGroupNameBytes());
+    }
+    for (int i = 0; i < cardProtoId_.size(); i++) {
+      output.writeInt32(4, cardProtoId_.get(i));
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -155,6 +315,23 @@ public  final class CardGroupAddRt extends
     if (((bitField0_ & 0x00000001) == 0x00000001)) {
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(1, rt_);
+    }
+    if (((bitField0_ & 0x00000002) == 0x00000002)) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(2, hero_);
+    }
+    if (((bitField0_ & 0x00000004) == 0x00000004)) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeBytesSize(3, getGroupNameBytes());
+    }
+    {
+      int dataSize = 0;
+      for (int i = 0; i < cardProtoId_.size(); i++) {
+        dataSize += com.google.protobuf.CodedOutputStream
+          .computeInt32SizeNoTag(cardProtoId_.get(i));
+      }
+      size += dataSize;
+      size += 1 * getCardProtoIdList().size();
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSerializedSize = size;
@@ -280,6 +457,12 @@ public  final class CardGroupAddRt extends
       super.clear();
       rt_ = 0;
       bitField0_ = (bitField0_ & ~0x00000001);
+      hero_ = 0;
+      bitField0_ = (bitField0_ & ~0x00000002);
+      groupName_ = "";
+      bitField0_ = (bitField0_ & ~0x00000004);
+      cardProtoId_ = java.util.Collections.emptyList();
+      bitField0_ = (bitField0_ & ~0x00000008);
       return this;
     }
 
@@ -312,6 +495,19 @@ public  final class CardGroupAddRt extends
         to_bitField0_ |= 0x00000001;
       }
       result.rt_ = rt_;
+      if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+        to_bitField0_ |= 0x00000002;
+      }
+      result.hero_ = hero_;
+      if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+        to_bitField0_ |= 0x00000004;
+      }
+      result.groupName_ = groupName_;
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        cardProtoId_ = java.util.Collections.unmodifiableList(cardProtoId_);
+        bitField0_ = (bitField0_ & ~0x00000008);
+      }
+      result.cardProtoId_ = cardProtoId_;
       result.bitField0_ = to_bitField0_;
       onBuilt();
       return result;
@@ -330,6 +526,24 @@ public  final class CardGroupAddRt extends
       if (other == com.owl.card.common.protobuf.cs.CardGroupAddRt.getDefaultInstance()) return this;
       if (other.hasRt()) {
         setRt(other.getRt());
+      }
+      if (other.hasHero()) {
+        setHero(other.getHero());
+      }
+      if (other.hasGroupName()) {
+        bitField0_ |= 0x00000004;
+        groupName_ = other.groupName_;
+        onChanged();
+      }
+      if (!other.cardProtoId_.isEmpty()) {
+        if (cardProtoId_.isEmpty()) {
+          cardProtoId_ = other.cardProtoId_;
+          bitField0_ = (bitField0_ & ~0x00000008);
+        } else {
+          ensureCardProtoIdIsMutable();
+          cardProtoId_.addAll(other.cardProtoId_);
+        }
+        onChanged();
       }
       this.mergeUnknownFields(other.getUnknownFields());
       return this;
@@ -391,6 +605,247 @@ public  final class CardGroupAddRt extends
     public Builder clearRt() {
       bitField0_ = (bitField0_ & ~0x00000001);
       rt_ = 0;
+      onChanged();
+      return this;
+    }
+
+    // optional int32 hero = 2;
+    private int hero_ ;
+    /**
+     * <code>optional int32 hero = 2;</code>
+     *
+     * <pre>
+     * 英雄
+     * </pre>
+     */
+    public boolean hasHero() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional int32 hero = 2;</code>
+     *
+     * <pre>
+     * 英雄
+     * </pre>
+     */
+    public int getHero() {
+      return hero_;
+    }
+    /**
+     * <code>optional int32 hero = 2;</code>
+     *
+     * <pre>
+     * 英雄
+     * </pre>
+     */
+    public Builder setHero(int value) {
+      bitField0_ |= 0x00000002;
+      hero_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>optional int32 hero = 2;</code>
+     *
+     * <pre>
+     * 英雄
+     * </pre>
+     */
+    public Builder clearHero() {
+      bitField0_ = (bitField0_ & ~0x00000002);
+      hero_ = 0;
+      onChanged();
+      return this;
+    }
+
+    // optional string groupName = 3;
+    private java.lang.Object groupName_ = "";
+    /**
+     * <code>optional string groupName = 3;</code>
+     *
+     * <pre>
+     * 卡组名称
+     * </pre>
+     */
+    public boolean hasGroupName() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional string groupName = 3;</code>
+     *
+     * <pre>
+     * 卡组名称
+     * </pre>
+     */
+    public java.lang.String getGroupName() {
+      java.lang.Object ref = groupName_;
+      if (!(ref instanceof java.lang.String)) {
+        java.lang.String s = ((com.google.protobuf.ByteString) ref)
+            .toStringUtf8();
+        groupName_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>optional string groupName = 3;</code>
+     *
+     * <pre>
+     * 卡组名称
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getGroupNameBytes() {
+      java.lang.Object ref = groupName_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        groupName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>optional string groupName = 3;</code>
+     *
+     * <pre>
+     * 卡组名称
+     * </pre>
+     */
+    public Builder setGroupName(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+      groupName_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>optional string groupName = 3;</code>
+     *
+     * <pre>
+     * 卡组名称
+     * </pre>
+     */
+    public Builder clearGroupName() {
+      bitField0_ = (bitField0_ & ~0x00000004);
+      groupName_ = getDefaultInstance().getGroupName();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>optional string groupName = 3;</code>
+     *
+     * <pre>
+     * 卡组名称
+     * </pre>
+     */
+    public Builder setGroupNameBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+      groupName_ = value;
+      onChanged();
+      return this;
+    }
+
+    // repeated int32 cardProtoId = 4;
+    private java.util.List<java.lang.Integer> cardProtoId_ = java.util.Collections.emptyList();
+    private void ensureCardProtoIdIsMutable() {
+      if (!((bitField0_ & 0x00000008) == 0x00000008)) {
+        cardProtoId_ = new java.util.ArrayList<java.lang.Integer>(cardProtoId_);
+        bitField0_ |= 0x00000008;
+       }
+    }
+    /**
+     * <code>repeated int32 cardProtoId = 4;</code>
+     *
+     * <pre>
+     * 卡牌编号
+     * </pre>
+     */
+    public java.util.List<java.lang.Integer>
+        getCardProtoIdList() {
+      return java.util.Collections.unmodifiableList(cardProtoId_);
+    }
+    /**
+     * <code>repeated int32 cardProtoId = 4;</code>
+     *
+     * <pre>
+     * 卡牌编号
+     * </pre>
+     */
+    public int getCardProtoIdCount() {
+      return cardProtoId_.size();
+    }
+    /**
+     * <code>repeated int32 cardProtoId = 4;</code>
+     *
+     * <pre>
+     * 卡牌编号
+     * </pre>
+     */
+    public int getCardProtoId(int index) {
+      return cardProtoId_.get(index);
+    }
+    /**
+     * <code>repeated int32 cardProtoId = 4;</code>
+     *
+     * <pre>
+     * 卡牌编号
+     * </pre>
+     */
+    public Builder setCardProtoId(
+        int index, int value) {
+      ensureCardProtoIdIsMutable();
+      cardProtoId_.set(index, value);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>repeated int32 cardProtoId = 4;</code>
+     *
+     * <pre>
+     * 卡牌编号
+     * </pre>
+     */
+    public Builder addCardProtoId(int value) {
+      ensureCardProtoIdIsMutable();
+      cardProtoId_.add(value);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>repeated int32 cardProtoId = 4;</code>
+     *
+     * <pre>
+     * 卡牌编号
+     * </pre>
+     */
+    public Builder addAllCardProtoId(
+        java.lang.Iterable<? extends java.lang.Integer> values) {
+      ensureCardProtoIdIsMutable();
+      super.addAll(values, cardProtoId_);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>repeated int32 cardProtoId = 4;</code>
+     *
+     * <pre>
+     * 卡牌编号
+     * </pre>
+     */
+    public Builder clearCardProtoId() {
+      cardProtoId_ = java.util.Collections.emptyList();
+      bitField0_ = (bitField0_ & ~0x00000008);
       onChanged();
       return this;
     }

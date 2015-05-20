@@ -91,24 +91,44 @@ public class LoginModule extends BaseModule implements LoginModuleInterface {
 		// 卡组信息
 		List<CardGroup> cardGroups = cardService.fetchCardGroupByRoleId(roleId);
 
-		// 填充session
-		session.setRole(role);
-
-		if (cards != null) {
-			session.setCards(cards);
-		}
-
-		if (cardGroups != null) {
-			session.setCardGroups(cardGroups);
-		}
+		// 初始化session
+		this.initSession(session, role, cards, cardGroups);
 
 		// 返回客户端
 		UserLoginS2CResp resp = new UserLoginS2CResp(ClientErrCode.RT_SUCC);
 		if (role != null) {
 			resp.addRoleInfo(role, cards, cardGroups);
 		}
-
 		session.sendMsg(resp.build());
+	}
+
+	/**
+	 * 填充session
+	 * 
+	 * @param session
+	 * @param role
+	 * @param cards
+	 * @param cardGroups
+	 */
+	private void initSession(GameSession session, Role role, List<Card> cards, List<CardGroup> cardGroups) {
+
+		session.setRole(role);
+
+		if (cards != null) {
+			session.setCards(cards);
+
+			for (Card card : cards) {
+				session.getCardMap().put(card.getProtoId(), card);
+			}
+		}
+
+		if (cardGroups != null) {
+			session.setGroups(cardGroups);
+
+			for (CardGroup group : cardGroups) {
+				session.getGroupMap().put(group.getId(), group);
+			}
+		}
 	}
 
 	/**
