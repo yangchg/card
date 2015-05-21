@@ -45,9 +45,9 @@
 		<disruptor.version>3.2.1</disruptor.version>
 
 		<spring.data.jedis.version>1.0.1.RELEASE</spring.data.jedis.version>
-		<jedis.version>2.6.1</jedis.version>
+		<jedis.version>2.6.1</jedis.version> 
 	</properties>
-
+ 
 	<modules>
 		<module>card-gateway</module>
 		<module>card-common</module>
