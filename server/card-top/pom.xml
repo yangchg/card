@@ -44,6 +44,8 @@
 		<mysql.connector.version>5.1.15</mysql.connector.version>
 		<disruptor.version>3.2.1</disruptor.version>
 
+		<spring.data.jedis.version>1.0.1.RELEASE</spring.data.jedis.version>
+		<jedis.version>2.6.1</jedis.version>
 	</properties>
 
 	<modules>
@@ -229,6 +231,17 @@
 				<groupId>com.lmax</groupId>
 				<artifactId>disruptor</artifactId>
 				<version>${disruptor.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>redis.clients</groupId>
+				<artifactId>jedis</artifactId>
+				<version>${jedis.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.data</groupId>
+				<artifactId>spring-data-redis</artifactId>
+				<version>${spring.data.jedis.version}</version>
 			</dependency>
 
 		</dependencies>

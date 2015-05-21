@@ -209,6 +209,6 @@ public class CardGroupModule extends BaseModule implements CardGroupModuleInterf
 			return ClientErrCode.GROUP_CARD_CNT_LIMIT;
 		}
 
-		return ClientErrCode.RT_SUCC; 
+		return ClientErrCode.RT_SUCC;
 	}
 }

@@ -37,6 +37,7 @@
 	</aop:config>
 
 	<import resource="classpath:applicationContext-dao.xml" />
+	<import resource="classpath:applicationContext-redis.xml" />
 	
 	<bean id="serverInit" class="com.owl.card.game.app.GameServerInit" />
 
