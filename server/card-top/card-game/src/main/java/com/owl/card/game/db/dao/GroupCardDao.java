@@ -14,4 +14,11 @@ public interface GroupCardDao extends GenericDao<GroupCard, Long> {
 	 * @return
 	 */
 	List<GroupCard> findCardByGroupId(Set<Long> groupIds);
+
+	/**
+	 * 删除指定卡组的卡牌
+	 * 
+	 * @param groupId
+	 */
+	void delByGroupId(long groupId);
 }

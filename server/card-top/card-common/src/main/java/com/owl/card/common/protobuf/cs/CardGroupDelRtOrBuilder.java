@@ -15,4 +15,22 @@ public interface CardGroupDelRtOrBuilder
    * <code>required int32 rt = 1;</code>
    */
   int getRt();
+
+  // required int64 groupId = 2;
+  /**
+   * <code>required int64 groupId = 2;</code>
+   *
+   * <pre>
+   * 卡组编号	
+   * </pre>
+   */
+  boolean hasGroupId();
+  /**
+   * <code>required int64 groupId = 2;</code>
+   *
+   * <pre>
+   * 卡组编号	
+   * </pre>
+   */
+  long getGroupId();
 }

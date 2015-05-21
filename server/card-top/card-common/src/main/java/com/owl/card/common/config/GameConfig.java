@@ -1,6 +1,5 @@
 package com.owl.card.common.config;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,7 +15,15 @@ import com.owl.card.common.utils.XmlConfig;
  */
 public class GameConfig {
 
-	public List<Integer> groupMaxCounts = new ArrayList<Integer>();
+	/**
+	 * 卡组最大卡牌数量
+	 */
+	public int GROUP_MAX_CARD_CNT = 1;
+
+	/**
+	 * 卡组最大数量
+	 */
+	public int MAX_GROUP_CNT = 1;
 
 	public GameConfig() {
 
@@ -34,14 +41,10 @@ public class GameConfig {
 		}
 
 		String groupEditCardUpperlimit = configMap.get("groupEditCardUpperlimit");
-		String[] groupCntArr = groupEditCardUpperlimit.split(":");
+		GROUP_MAX_CARD_CNT = Integer.valueOf(groupEditCardUpperlimit);
 
-		for (String groupCnt : groupCntArr) {
-			if (groupCnt.isEmpty())
-				continue;
-
-			groupMaxCounts.add(Integer.valueOf(groupCnt));
-		}
+		String cardGroupUpperlimit = configMap.get("CardGroupUpperlimit");
+		MAX_GROUP_CNT = Integer.valueOf(cardGroupUpperlimit);
 
 		LoadPrint.loadPrint("Game Config", 1);
 	}

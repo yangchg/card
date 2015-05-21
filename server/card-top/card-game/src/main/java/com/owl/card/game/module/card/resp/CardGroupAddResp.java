@@ -14,7 +14,7 @@ public class CardGroupAddResp {
 		cardGroupAddRt.setRt(rt);
 	}
 
-	public void addAddRtInfo(int hero, String groupName, List<Integer> cardProtoIds) {
+	public void addInfo(int hero, String groupName, List<Integer> cardProtoIds) {
 		cardGroupAddRt.setHero(hero);
 		cardGroupAddRt.setGroupName(groupName);
 		cardGroupAddRt.addAllCardProtoId(cardProtoIds);
