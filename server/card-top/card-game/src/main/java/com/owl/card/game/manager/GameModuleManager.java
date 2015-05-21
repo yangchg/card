@@ -49,7 +49,7 @@ public class GameModuleManager {
 
 		loginModule = registerModule(new LoginModule(serverInit.getAccountService(), serverInit.getRoleService(),
 				serverInit.getCardService()));
-		cardGroupModule = registerModule(new CardGroupModule());
+		cardGroupModule = registerModule(new CardGroupModule(serverInit.getCardService()));
 	}
 
 }

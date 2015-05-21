@@ -13,6 +13,7 @@ import com.owl.card.game.manager.AppGameMaster;
 
 public class GameSession {
 	private int channelId;
+	private long roleId;
 
 	// 玩家信息
 	private Role role;
@@ -32,6 +33,14 @@ public class GameSession {
 
 	public void setChannelId(int channelId) {
 		this.channelId = channelId;
+	}
+
+	public long getRoleId() {
+		return roleId;
+	}
+
+	public void setRoleId(long roleId) {
+		this.roleId = roleId;
 	}
 
 	public Role getRole() {

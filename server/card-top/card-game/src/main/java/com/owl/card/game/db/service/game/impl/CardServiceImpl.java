@@ -1,6 +1,5 @@
 package com.owl.card.game.db.service.game.impl;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -71,4 +70,51 @@ public class CardServiceImpl implements CardService {
 		return null;
 	}
 
+	@Override
+	public CardGroup addCardGroup(int hero, String groupName, long roleId, List<Integer> cardProtoIds) {
+		CardGroup cardGroup = new CardGroup(hero, groupName, roleId);
+		long groupId = cardGroupDao.save(cardGroup);
+
+		for (Integer cardProtoId : cardProtoIds) {
+			GroupCard groupCard = new GroupCard(cardProtoId, groupId);
+			long gid = groupCardDao.save(groupCard);
+			groupCard.setGroupId(gid);
+		}
+
+		cardGroup.getCards().addAll(cardProtoIds);
+
+		return cardGroup;
+	}
+
+	@Override
+	public CardGroup editCardGroup(long groupId, String newGroupName, List<Integer> cardProtoIds) {
+		// 修改组名
+		CardGroup cardGroup = cardGroupDao.findById(groupId);
+		if (cardGroup == null) {
+			return null;
+		}
+
+		cardGroup.setGroupName(newGroupName);
+
+		// 修改卡组的卡牌
+		groupCardDao.delByGroupId(groupId);
+
+		for (Integer cardProtoId : cardProtoIds) {
+			GroupCard groupCard = new GroupCard(cardProtoId, groupId);
+			groupCardDao.save(groupCard);
+		}
+
+		cardGroup.getCards().addAll(cardProtoIds);
+
+		return cardGroup;
+	}
+
+	@Override
+	public void delCardGroup(long groupId) {
+		// 删除卡组
+		cardGroupDao.deleteById(groupId);
+
+		// 删除卡组的卡牌
+		groupCardDao.delByGroupId(groupId);
+	}
 }

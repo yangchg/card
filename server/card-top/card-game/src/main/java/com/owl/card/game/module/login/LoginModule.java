@@ -111,8 +111,8 @@ public class LoginModule extends BaseModule implements LoginModuleInterface {
 	 * @param cardGroups
 	 */
 	private void initSession(GameSession session, Role role, List<Card> cards, List<CardGroup> cardGroups) {
-
 		session.setRole(role);
+		session.setRoleId(role.getId());
 
 		if (cards != null) {
 			session.setCards(cards);

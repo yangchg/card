@@ -31,4 +31,29 @@ public interface CardService {
 	 * @return
 	 */
 	List<CardGroup> fetchCardGroupByRoleId(long roleId);
+
+	/**
+	 * 添加卡组信息
+	 * 
+	 * @param cardGroup
+	 */
+	CardGroup addCardGroup(int hero, String groupName, long roleId, List<Integer> cardProtoIds);
+
+	/**
+	 * 编辑卡组
+	 * 
+	 * @param groupId
+	 * @param newGroupName
+	 * @param cardProtoIds
+	 * @return
+	 */
+	CardGroup editCardGroup(long groupId, String newGroupName, List<Integer> cardProtoIds);
+
+	/**
+	 * 删除卡组
+	 * 
+	 * @param groupId
+	 */
+	void delCardGroup(long groupId);
+
 }

@@ -30,4 +30,16 @@ public class GroupCardDaoImpl extends GameGenericDaoImpl<GroupCard, Long> implem
 		return groupCards;
 	}
 
+	@Override
+	public void delByGroupId(long groupId) {
+		getHibernateTemplate().execute(new HibernateCallback<Integer>() {
+			public Integer doInHibernate(Session session) throws HibernateException {
+				String hql = "DELETE FROM GroupCard WHERE groupId = :groupId";
+				Query query = session.createQuery(hql);
+				query.setLong("groupId", groupId);
+				return query.executeUpdate();
+			}
+		});
+	}
+
 }

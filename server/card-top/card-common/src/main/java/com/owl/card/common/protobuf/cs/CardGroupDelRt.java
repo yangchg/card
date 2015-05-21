@@ -65,6 +65,11 @@ public  final class CardGroupDelRt extends
             rt_ = input.readInt32();
             break;
           }
+          case 16: {
+            bitField0_ |= 0x00000002;
+            groupId_ = input.readInt64();
+            break;
+          }
         }
       }
     } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -121,8 +126,33 @@ public  final class CardGroupDelRt extends
     return rt_;
   }
 
+  // required int64 groupId = 2;
+  public static final int GROUPID_FIELD_NUMBER = 2;
+  private long groupId_;
+  /**
+   * <code>required int64 groupId = 2;</code>
+   *
+   * <pre>
+   * 卡组编号	
+   * </pre>
+   */
+  public boolean hasGroupId() {
+    return ((bitField0_ & 0x00000002) == 0x00000002);
+  }
+  /**
+   * <code>required int64 groupId = 2;</code>
+   *
+   * <pre>
+   * 卡组编号	
+   * </pre>
+   */
+  public long getGroupId() {
+    return groupId_;
+  }
+
   private void initFields() {
     rt_ = 0;
+    groupId_ = 0L;
   }
   private byte memoizedIsInitialized = -1;
   public final boolean isInitialized() {
@@ -130,6 +160,10 @@ public  final class CardGroupDelRt extends
     if (isInitialized != -1) return isInitialized == 1;
 
     if (!hasRt()) {
+      memoizedIsInitialized = 0;
+      return false;
+    }
+    if (!hasGroupId()) {
       memoizedIsInitialized = 0;
       return false;
     }
@@ -143,6 +177,9 @@ public  final class CardGroupDelRt extends
     if (((bitField0_ & 0x00000001) == 0x00000001)) {
       output.writeInt32(1, rt_);
     }
+    if (((bitField0_ & 0x00000002) == 0x00000002)) {
+      output.writeInt64(2, groupId_);
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -155,6 +192,10 @@ public  final class CardGroupDelRt extends
     if (((bitField0_ & 0x00000001) == 0x00000001)) {
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(1, rt_);
+    }
+    if (((bitField0_ & 0x00000002) == 0x00000002)) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt64Size(2, groupId_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSerializedSize = size;
@@ -280,6 +321,8 @@ public  final class CardGroupDelRt extends
       super.clear();
       rt_ = 0;
       bitField0_ = (bitField0_ & ~0x00000001);
+      groupId_ = 0L;
+      bitField0_ = (bitField0_ & ~0x00000002);
       return this;
     }
 
@@ -312,6 +355,10 @@ public  final class CardGroupDelRt extends
         to_bitField0_ |= 0x00000001;
       }
       result.rt_ = rt_;
+      if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+        to_bitField0_ |= 0x00000002;
+      }
+      result.groupId_ = groupId_;
       result.bitField0_ = to_bitField0_;
       onBuilt();
       return result;
@@ -331,12 +378,19 @@ public  final class CardGroupDelRt extends
       if (other.hasRt()) {
         setRt(other.getRt());
       }
+      if (other.hasGroupId()) {
+        setGroupId(other.getGroupId());
+      }
       this.mergeUnknownFields(other.getUnknownFields());
       return this;
     }
 
     public final boolean isInitialized() {
       if (!hasRt()) {
+        
+        return false;
+      }
+      if (!hasGroupId()) {
         
         return false;
       }
@@ -391,6 +445,55 @@ public  final class CardGroupDelRt extends
     public Builder clearRt() {
       bitField0_ = (bitField0_ & ~0x00000001);
       rt_ = 0;
+      onChanged();
+      return this;
+    }
+
+    // required int64 groupId = 2;
+    private long groupId_ ;
+    /**
+     * <code>required int64 groupId = 2;</code>
+     *
+     * <pre>
+     * 卡组编号	
+     * </pre>
+     */
+    public boolean hasGroupId() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required int64 groupId = 2;</code>
+     *
+     * <pre>
+     * 卡组编号	
+     * </pre>
+     */
+    public long getGroupId() {
+      return groupId_;
+    }
+    /**
+     * <code>required int64 groupId = 2;</code>
+     *
+     * <pre>
+     * 卡组编号	
+     * </pre>
+     */
+    public Builder setGroupId(long value) {
+      bitField0_ |= 0x00000002;
+      groupId_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>required int64 groupId = 2;</code>
+     *
+     * <pre>
+     * 卡组编号	
+     * </pre>
+     */
+    public Builder clearGroupId() {
+      bitField0_ = (bitField0_ & ~0x00000002);
+      groupId_ = 0L;
       onChanged();
       return this;
     }

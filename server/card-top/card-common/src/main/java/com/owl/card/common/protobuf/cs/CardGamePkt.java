@@ -69,9 +69,10 @@ public final class CardGamePkt {
       "\002 \002(\t\022\023\n\013cardProtoId\030\003 \003(\005\"V\n\017CardGroupE",
       "ditRt\022\n\n\002rt\030\001 \002(\005\022\017\n\007groupId\030\002 \001(\003\022\021\n\tgr" +
       "oupName\030\003 \001(\t\022\023\n\013cardProtoId\030\004 \003(\005\"\037\n\014Ca" +
-      "rdGroupDel\022\017\n\007groupId\030\001 \002(\003\"\034\n\016CardGroup" +
-      "DelRt\022\n\n\002rt\030\001 \002(\005B0\n\037com.owl.card.common" +
-      ".protobuf.csB\013CardGamePktP\001"
+      "rdGroupDel\022\017\n\007groupId\030\001 \002(\003\"-\n\016CardGroup" +
+      "DelRt\022\n\n\002rt\030\001 \002(\005\022\017\n\007groupId\030\002 \002(\003B0\n\037co" +
+      "m.owl.card.common.protobuf.csB\013CardGameP" +
+      "ktP\001"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -125,7 +126,7 @@ public final class CardGamePkt {
           internal_static_CardGroupDelRt_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_CardGroupDelRt_descriptor,
-              new java.lang.String[] { "Rt", });
+              new java.lang.String[] { "Rt", "GroupId", });
           return null;
         }
       };
